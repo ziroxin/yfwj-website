@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>有风无界 - 全栈视频浏览器</title>
+    <meta name="description" content="有风无界 - Android全栈视频浏览器，支持视频嗅探、边下边播、悬浮播放、广告过滤、投屏等功能">
+    <meta name="keywords" content="有风无界, VideoBrowser, 视频浏览器, m3u8播放器, 视频下载, 安卓应用">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌬️</text></svg>">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <a href="#" class="logo">
+                <span class="logo-icon">🌬️</span>
+                <span class="logo-text">有风无界</span>
+            </a>
+            <nav class="nav">
+                <a href="#features" class="nav-link">功能</a>
+                <a href="#guide" class="nav-link">使用说明</a>
+                <a href="#changelog" class="nav-link">更新日志</a>
+                <a href="#download" class="nav-link nav-link--cta">下载</a>
+            </nav>
+            <button class="menu-toggle" id="menuToggle" aria-label="菜单">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="hero-title-line">有风</span>
+                    <span class="hero-title-line hero-title-line--accent">无界</span>
+                </h1>
+                <p class="hero-subtitle">全栈视频能力，一站式闭环体验</p>
+                <p class="hero-description">
+                    从视频嗅探到播放，从下载到投屏，一个应用满足你所有需求。
+                    支持边下边播、智能广告过滤、悬浮播放，重新定义移动端视频体验。
+                </p>
+                <div class="hero-actions">
+                    <a href="#download" class="btn btn--primary">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        立即下载
+                    </a>
+                    <a href="https://github.com/ziro/video-browser" class="btn btn--secondary" target="_blank" rel="noopener">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        GitHub
+                    </a>
+                </div>
+                <div class="hero-meta">
+                    <span class="hero-version">v1.0.9</span>
+                    <span class="hero-separator">·</span>
+                    <span class="hero-platform">Android 7.0+</span>
+                    <span class="hero-separator">·</span>
+                    <span class="hero-license">MIT License</span>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <div class="phone-status-bar">
+                            <span>9:41</span>
+                            <span>📶 🔋</span>
+                        </div>
+                        <div class="phone-app">
+                            <div class="phone-app-header">
+                                <span>🌬️ 有风无界</span>
+                            </div>
+                            <div class="phone-app-content">
+                                <div class="phone-card"></div>
+                                <div class="phone-card phone-card--short"></div>
+                                <div class="phone-card"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">核心功能</h2>
+                <p class="section-subtitle">全栈视频能力，覆盖完整使用场景</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="11" cy="11" r="8"/>
+                            <path d="m21 21-4.35-4.35"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">视频嗅探</h3>
+                    <p class="feature-desc">自动检测网页中的m3u8/mp4等视频资源，支持8种常见格式，一键获取视频链接</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <polygon points="5 3 19 12 5 21 5 3"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">边下边播</h3>
+                    <p class="feature-desc">下载未完成即可播放已完成部分，混合本地+网络的hybrid m3u8技术，无需等待</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">悬浮播放</h3>
+                    <p class="feature-desc">可拖动悬浮窗，后台持续播放，通知栏控制，多任务处理不间断</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">广告过滤</h3>
+                    <p class="feature-desc">双引擎智能过滤：EasyList网页广告拦截 + M3U8视频广告检测，5种策略精准识别</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M2 16.1A5 5 0 0 1 5.9 20M2 12.05A9 9 0 0 1 9.95 20M2 8V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6"/>
+                            <line x1="2" y1="20" x2="2.01" y2="20"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">投屏功能</h3>
+                    <p class="feature-desc">局域网HTTP投屏 + SSDP DLNA设备发现，轻松将手机内容投射到大屏</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="17 8 12 3 7 8"/>
+                            <line x1="12" y1="3" x2="12" y2="15"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">文件快传</h3>
+                    <p class="feature-desc">局域网WiFi文件传输，无需数据线，手机电脑互传文件轻松便捷</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">阅读模式</h3>
+                    <p class="feature-desc">智能正文提取，4种主题切换，字号调节，沉浸式阅读体验</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="3" width="7" height="7"/>
+                            <rect x="14" y="3" width="7" height="7"/>
+                            <rect x="14" y="14" width="7" height="7"/>
+                            <rect x="3" y="14" width="7" height="7"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">多标签浏览</h3>
+                    <p class="feature-desc">WebView多标签页，标签持久化恢复，隐身模式，多任务浏览</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guide Section -->
+    <section class="guide" id="guide">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">使用说明</h2>
+                <p class="section-subtitle">快速上手，释放全部潜能</p>
+            </div>
+            <div class="guide-list">
+                <div class="guide-item">
+                    <button class="guide-trigger">
+                        <span class="guide-number">01</span>
+                        <span class="guide-question">如何下载网页中的视频？</span>
+                        <svg class="guide-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="guide-answer">
+                        <p>1. 在浏览器中打开包含视频的网页</p>
+                        <p>2. 点击地址栏右侧的嗅探按钮，系统会自动检测页面中的视频资源</p>
+                        <p>3. 在弹出的资源列表中选择要下载的视频</p>
+                        <p>4. 点击下载按钮，选择画质和保存位置</p>
+                        <p>5. 在下载管理中查看进度，支持断点续传</p>
+                    </div>
+                </div>
+                <div class="guide-item">
+                    <button class="guide-trigger">
+                        <span class="guide-number">02</span>
+                        <span class="guide-question">什么是边下边播？如何使用？</span>
+                        <svg class="guide-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="guide-answer">
+                        <p>边下边播允许你在视频下载完成前就开始播放已下载的部分。</p>
+                        <p>1. 开始下载一个视频</p>
+                        <p>2. 在下载列表中点击"播放"按钮</p>
+                        <p>3. 系统会自动创建混合播放列表（本地+网络）</p>
+                        <p>4. 已下载部分本地播放，未下载部分在线加载</p>
+                        <p>5. 随着下载进度增加，本地播放比例会逐步提升</p>
+                    </div>
+                </div>
+                <div class="guide-item">
+                    <button class="guide-trigger">
+                        <span class="guide-number">03</span>
+                        <span class="guide-question">如何开启悬浮播放？</span>
+                        <svg class="guide-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="guide-answer">
+                        <p>1. 在播放视频时，点击悬浮播放按钮</p>
+                        <p>2. 视频会缩小为可拖动的悬浮窗</p>
+                        <p>3. 悬浮窗可自由拖动到屏幕任意位置</p>
+                        <p>4. 支持通知栏控制：暂停/播放、上一集/下一集</p>
+                        <p>5. 退出应用后悬浮窗仍会保持，实现后台播放</p>
+                    </div>
+                </div>
+                <div class="guide-item">
+                    <button class="guide-trigger">
+                        <span class="guide-number">04</span>
+                        <span class="guide-question">如何使用投屏功能？</span>
+                        <svg class="guide-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="guide-answer">
+                        <p>1. 确保手机和投屏设备在同一局域网</p>
+                        <p>2. 在播放界面点击投屏按钮</p>
+                        <p>3. 系统会自动搜索可用的DLNA设备</p>
+                        <p>4. 选择目标设备进行投屏</p>
+                        <p>5. 也可以手动输入设备IP地址进行投屏</p>
+                    </div>
+                </div>
+                <div class="guide-item">
+                    <button class="guide-trigger">
+                        <span class="guide-number">05</span>
+                        <span class="guide-question">广告过滤如何配置？</span>
+                        <svg class="guide-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="guide-answer">
+                        <p>广告过滤默认开启，包含两个引擎：</p>
+                        <p><strong>网页广告过滤</strong>：基于EasyList/EasyPrivacy规则，自动拦截网页广告</p>
+                        <p><strong>视频广告过滤</strong>：M3U8广告检测，支持5种策略：</p>
+                        <p>· URL关键词匹配</p>
+                        <p>· DATERANGE标签检测</p>
+                        <p>· CUE-OUT/IN标记识别</p>
+                        <p>· Z-Score统计分析</p>
+                        <p>· 不连续块检测</p>
+                    </div>
+                </div>
+                <div class="guide-item">
+                    <button class="guide-trigger">
+                        <span class="guide-number">06</span>
+                        <span class="guide-question">支持哪些视频格式？</span>
+                        <svg class="guide-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="guide-answer">
+                        <p><strong>在线播放支持</strong>：</p>
+                        <p>· HLS (m3u8) - 主要支持格式</p>
+                        <p>· MP4, MKV, AVI, FLV</p>
+                        <p>· WebM, MOV, TS</p>
+                        <p><strong>下载合并</strong>：</p>
+                        <p>· TS分片下载后通过FFmpeg合并为MP4</p>
+                        <p>· 支持AES-128加密视频解密</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Changelog Section -->
+    <section class="changelog" id="changelog">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">更新日志</h2>
+                <p class="section-subtitle">持续迭代，不断进化</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <span class="timeline-version">v1.0.9</span>
+                        <span class="timeline-date">2024</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">正式打包测试更新</h3>
+                        <ul class="timeline-list">
+                            <li>播放器代码审计与Bug修复</li>
+                            <li>下载文件类型优化</li>
+                            <li>嗅探资源更新标题逻辑优化</li>
+                            <li>常见音视频格式嗅探支持</li>
+                            <li>操作区域、全屏切换优化</li>
+                            <li>片头片尾设置优化</li>
+                            <li>切换上下集位置提示优化</li>
+                            <li>播放时左/中/右触摸区域划分优化</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <span class="timeline-version">v1.0.8</span>
+                        <span class="timeline-date">2024</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">已下载功能优化</h3>
+                        <ul class="timeline-list">
+                            <li>视频显示未播/已播状态</li>
+                            <li>非视频文件显示NEW标记</li>
+                            <li>隐私政策更新</li>
+                            <li>扫描优化与漏洞修复</li>
+                            <li>更新逻辑优化</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <span class="timeline-version">v1.0.7</span>
+                        <span class="timeline-date">2024</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">数据库与架构升级</h3>
+                        <ul class="timeline-list">
+                            <li>Room数据库迁移至v11</li>
+                            <li>新增saved_tabs表</li>
+                            <li>视频资源管理优化</li>
+                            <li>跨版本更新测试完成</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <span class="timeline-version">v1.0.6</span>
+                        <span class="timeline-date">2024</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">下载功能增强</h3>
+                        <ul class="timeline-list">
+                            <li>下载设置新增autoDownloadDialog选项</li>
+                            <li>下载队列管理优化</li>
+                            <li>多线程下载稳定性提升</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <span class="timeline-version">v1.0.5</span>
+                        <span class="timeline-date">2024</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">搜索历史功能</h3>
+                        <ul class="timeline-list">
+                            <li>新增recent_search表</li>
+                            <li>搜索历史记录保存</li>
+                            <li>快速访问历史搜索</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <span class="timeline-version">v1.0.4</span>
+                        <span class="timeline-date">2024</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">下载设置独立</h3>
+                        <ul class="timeline-list">
+                            <li>新增download_settings表</li>
+                            <li>线程数、并发数独立配置</li>
+                            <li>WiFi限制设置</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <span class="timeline-version">v1.0.3</span>
+                        <span class="timeline-date">2024</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">下载体验优化</h3>
+                        <ul class="timeline-list">
+                            <li>下载速度、剩余时间显示</li>
+                            <li>播放进度记录</li>
+                            <li>缩略图预览</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <span class="timeline-version">v1.0.0</span>
+                        <span class="timeline-date">2024</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">首个正式版本</h3>
+                        <ul class="timeline-list">
+                            <li>多标签浏览器</li>
+                            <li>视频嗅探与播放</li>
+                            <li>视频下载功能</li>
+                            <li>悬浮播放</li>
+                            <li>广告过滤</li>
+                            <li>投屏功能</li>
+                            <li>文件快传</li>
+                            <li>阅读模式</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download" id="download">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">立即下载</h2>
+                <p class="section-subtitle">开启全新视频体验</p>
+            </div>
+            <div class="download-card">
+                <div class="download-info">
+                    <div class="download-app">
+                        <span class="download-icon">🌬️</span>
+                        <div>
+                            <h3 class="download-name">有风无界</h3>
+                            <p class="download-version">Version 1.0.9</p>
+                        </div>
+                    </div>
+                    <div class="download-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">大小</span>
+                            <span class="spec-value">~20MB</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">系统</span>
+                            <span class="spec-value">Android 7.0+</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">更新</span>
+                            <span class="spec-value">2024</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="download-actions">
+                    <a href="http://58.57.95.202:18080/yfwj-app/YFWJ-v1.0.9.apk" class="btn btn--primary btn--large">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        下载 APK
+                    </a>
+                    <p class="download-note">安装包已通过安全检测</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">联系我们</h2>
+                <p class="section-subtitle">期待你的反馈与建议</p>
+            </div>
+            <div class="contact-grid">
+                <a href="https://github.com/ziro/video-browser" class="contact-card" target="_blank" rel="noopener">
+                    <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    <h3 class="contact-title">GitHub</h3>
+                    <p class="contact-desc">查看源代码</p>
+                </a>
+                <div class="contact-card contact-card--placeholder">
+                    <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                    <h3 class="contact-title">邮箱</h3>
+                    <p class="contact-desc">coming soon</p>
+                </div>
+                <div class="contact-card contact-card--placeholder">
+                    <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                    </svg>
+                    <h3 class="contact-title">粉丝群</h3>
+                    <p class="contact-desc">coming soon</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo">🌬️ 有风无界</span>
+                    <p class="footer-copyright">© 2024 Ziro Xin. All rights reserved.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/ziro/video-browser" target="_blank" rel="noopener">GitHub</a>
+                    <a href="#features">功能</a>
+                    <a href="#guide">使用说明</a>
+                    <a href="#changelog">更新日志</a>
+                </div>
+            </div>
+            <div class="footer-license">
+                <p>Licensed under MIT License</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

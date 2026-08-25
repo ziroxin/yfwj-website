@@ -146,15 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Add active nav link styles
-    const navStyle = document.createElement('style');
-    navStyle.textContent = `
-        .nav-link--active:not(.nav-link--cta) {
-            color: var(--color-accent) !important;
-        }
-    `;
-    document.head.appendChild(navStyle);
-
     // Back to Top
     const backToTop = document.getElementById('backToTop');
     if (backToTop) {

@@ -160,4 +160,36 @@ document.addEventListener('DOMContentLoaded', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
+
+    // Hero phone carousel
+    const slides = document.querySelectorAll('.phone-slide');
+    if (slides.length > 1) {
+        let current = 0;
+        const carousel = document.querySelector('.phone-carousel');
+        const prevBtn = document.querySelector('.carousel-btn--prev');
+        const nextBtn = document.querySelector('.carousel-btn--next');
+
+        function goTo(index) {
+            slides[current].classList.remove('active');
+            current = (index + slides.length) % slides.length;
+            slides[current].classList.add('active');
+        }
+
+        let timer = setInterval(() => goTo(current + 1), 3000);
+
+        function resetTimer() {
+            clearInterval(timer);
+            timer = setInterval(() => goTo(current + 1), 3000);
+        }
+
+        if (prevBtn) prevBtn.addEventListener('click', () => { goTo(current - 1); resetTimer(); });
+        if (nextBtn) nextBtn.addEventListener('click', () => { goTo(current + 1); resetTimer(); });
+
+        if (carousel) {
+            carousel.addEventListener('mouseenter', () => clearInterval(timer));
+            carousel.addEventListener('mouseleave', () => {
+                timer = setInterval(() => goTo(current + 1), 3000);
+            });
+        }
+    }
 });

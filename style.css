@@ -666,6 +666,34 @@ img {
     color: var(--color-accent);
 }
 
+.timeline-extra {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.timeline-list.expanded .timeline-extra {
+    max-height: 800px;
+}
+
+.timeline-expand-btn {
+    display: block;
+    margin: 12px auto 0;
+    padding: 6px 16px;
+    font-size: 13px;
+    color: var(--color-accent);
+    background: none;
+    border: 1px solid var(--color-accent);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.timeline-expand-btn:hover {
+    background: var(--color-accent);
+    color: #fff;
+}
+
 /* ========================================
    Download Section
    ======================================== */

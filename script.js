@@ -146,6 +146,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Changelog collapse/expand
+    document.querySelectorAll('.timeline-list').forEach(list => {
+        const items = list.querySelectorAll('li');
+        if (items.length < 5) return;
+
+        const extra = document.createElement('div');
+        extra.className = 'timeline-extra';
+        for (let i = 2; i < items.length; i++) {
+            extra.appendChild(items[i]);
+        }
+        list.appendChild(extra);
+
+        const btn = document.createElement('button');
+        btn.className = 'timeline-expand-btn';
+        btn.textContent = `展开全部 (共 ${items.length} 条)`;
+        list.parentElement.appendChild(btn);
+
+        btn.addEventListener('click', () => {
+            const expanded = list.classList.toggle('expanded');
+            btn.textContent = expanded
+                ? '收起'
+                : `展开全部 (共 ${items.length} 条)`;
+        });
+    });
+
     // Back to Top
     const backToTop = document.getElementById('backToTop');
     if (backToTop) {

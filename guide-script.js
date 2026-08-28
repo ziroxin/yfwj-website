@@ -169,4 +169,153 @@ document.addEventListener('DOMContentLoaded', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
+
+    // Lightbox
+    const allImages = Array.from(document.querySelectorAll('.doc-img'));
+    if (allImages.length > 0) {
+        let currentIndex = 0;
+
+        const overlay = document.createElement('div');
+        overlay.className = 'lightbox-overlay';
+        overlay.innerHTML = `
+            <button class="lightbox-close" aria-label="关闭">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <button class="lightbox-nav lightbox-prev" aria-label="上一张">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="lightbox-nav lightbox-next" aria-label="下一张">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+            </button>
+            <div class="lightbox-container">
+                <img class="lightbox-img" src="" alt="">
+            </div>
+            <div class="lightbox-toolbar">
+                <button class="lb-zoom-out" aria-label="缩小">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                </button>
+                <span class="lightbox-counter">1 / 39</span>
+                <button class="lb-zoom-in" aria-label="放大">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                </button>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+
+        const lbImg = overlay.querySelector('.lightbox-img');
+        const counter = overlay.querySelector('.lightbox-counter');
+        let scale = 1, translateX = 0, translateY = 0;
+        let isDragging = false, dragStartX = 0, dragStartY = 0, imgStartX = 0, imgStartY = 0;
+
+        function applyTransform() {
+            lbImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+            lbImg.style.cursor = scale > 1 ? 'grab' : 'zoom-in';
+        }
+
+        function updateSlide() {
+            lbImg.src = allImages[currentIndex].src;
+            lbImg.alt = allImages[currentIndex].alt;
+            counter.textContent = `${currentIndex + 1} / ${allImages.length}`;
+            scale = 1;
+            translateX = 0;
+            translateY = 0;
+            applyTransform();
+        }
+
+        function openLightbox(index) {
+            currentIndex = index;
+            updateSlide();
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        allImages.forEach((img, i) => {
+            img.addEventListener('click', () => openLightbox(i));
+        });
+
+        overlay.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) closeLightbox();
+        });
+
+        overlay.querySelector('.lightbox-prev').addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentIndex = (currentIndex - 1 + allImages.length) % allImages.length;
+            updateSlide();
+        });
+
+        overlay.querySelector('.lightbox-next').addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentIndex = (currentIndex + 1) % allImages.length;
+            updateSlide();
+        });
+
+        overlay.querySelector('.lb-zoom-in').addEventListener('click', (e) => {
+            e.stopPropagation();
+            scale = Math.min(scale + 0.25, 3);
+            applyTransform();
+        });
+
+        overlay.querySelector('.lb-zoom-out').addEventListener('click', (e) => {
+            e.stopPropagation();
+            scale = Math.max(scale - 0.25, 0.5);
+            applyTransform();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (!overlay.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') {
+                currentIndex = (currentIndex - 1 + allImages.length) % allImages.length;
+                updateSlide();
+            }
+            if (e.key === 'ArrowRight') {
+                currentIndex = (currentIndex + 1) % allImages.length;
+                updateSlide();
+            }
+        });
+
+        overlay.addEventListener('wheel', (e) => {
+            if (!overlay.classList.contains('active')) return;
+            e.preventDefault();
+            if (e.deltaY < 0) {
+                scale = Math.min(scale + 0.1, 3);
+            } else {
+                scale = Math.max(scale - 0.1, 0.5);
+            }
+            applyTransform();
+        }, { passive: false });
+
+        // Drag to pan
+        lbImg.addEventListener('mousedown', (e) => {
+            if (scale <= 1) return;
+            e.preventDefault();
+            isDragging = true;
+            dragStartX = e.clientX;
+            dragStartY = e.clientY;
+            imgStartX = translateX;
+            imgStartY = translateY;
+            lbImg.style.cursor = 'grabbing';
+            lbImg.style.transition = 'none';
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            translateX = imgStartX + (e.clientX - dragStartX);
+            translateY = imgStartY + (e.clientY - dragStartY);
+            applyTransform();
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (!isDragging) return;
+            isDragging = false;
+            lbImg.style.transition = '';
+            applyTransform();
+        });
+    }
 });

@@ -165,6 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const slides = document.querySelectorAll('.phone-slide');
     if (slides.length > 1) {
         let current = 0;
+        let timer = null;
         const carousel = document.querySelector('.phone-carousel');
         const prevBtn = document.querySelector('.carousel-btn--prev');
         const nextBtn = document.querySelector('.carousel-btn--next');
@@ -175,21 +176,19 @@ document.addEventListener('DOMContentLoaded', () => {
             slides[current].classList.add('active');
         }
 
-        let timer = setInterval(() => goTo(current + 1), 3000);
-
         function resetTimer() {
             clearInterval(timer);
             timer = setInterval(() => goTo(current + 1), 3000);
         }
 
-        if (prevBtn) prevBtn.addEventListener('click', () => { goTo(current - 1); resetTimer(); });
-        if (nextBtn) nextBtn.addEventListener('click', () => { goTo(current + 1); resetTimer(); });
+        if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); goTo(current - 1); resetTimer(); });
+        if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); goTo(current + 1); resetTimer(); });
 
         if (carousel) {
             carousel.addEventListener('mouseenter', () => clearInterval(timer));
-            carousel.addEventListener('mouseleave', () => {
-                timer = setInterval(() => goTo(current + 1), 3000);
-            });
+            carousel.addEventListener('mouseleave', () => resetTimer());
         }
+
+        resetTimer();
     }
 });

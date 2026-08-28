@@ -674,7 +674,7 @@ img {
 }
 
 .download-card {
-    max-width: 610px;
+    max-width: 590px;
     margin: 0 auto;
     background: var(--color-bg-secondary);
     border-radius: 24px;
@@ -735,8 +735,10 @@ img {
 
 .download-note {
     font-size: 13px;
-    color: var(--color-text-secondary);
+    color: var(--color-accent);
     margin-top: 12px;
+    text-align: left;
+    margin-left: 23px;
 }
 
 .download-password-tip {
@@ -744,10 +746,11 @@ img {
     align-items: center;
     gap: 6px;
     margin-top: 16px;
+    margin-left: 16px;
     padding: 10px 16px;
     background: #FFF3E0;
     border: 1px solid #FFB74D;
-    border-radius: 20px;
+    border-radius: 10px;
     color: #E65100;
     font-size: 14px;
     font-weight: 500;

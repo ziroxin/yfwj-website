@@ -7,618 +7,830 @@
     <meta name="description" content="有风无界 - Android全栈视频浏览器使用指南">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap"
+          rel="stylesheet">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="guide-style.css">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header" id="header">
-        <div class="container">
-            <a href="index.html" class="logo">
-                <img src="logo.png" alt="有风无界" class="logo-img">
-                <span class="logo-text">有风无界</span>
-            </a>
-            <nav class="nav">
-                <a href="index.html" class="nav-link">首页</a>
-                <a href="index.html#download" class="nav-link nav-link--cta">下载应用</a>
-            </nav>
-            <button class="menu-toggle" id="menuToggle" aria-label="菜单">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </header>
-
-    <!-- Main Layout -->
-    <div class="layout">
-        <!-- Sidebar -->
-        <aside class="sidebar" id="sidebar">
-            <div class="sidebar-header">
-                <span class="sidebar-title">使用说明书</span>
-                <span class="sidebar-version">V1.0.0</span>
-            </div>
-            <nav class="sidebar-nav">
-                <a href="#ch1" class="sidebar-link active" data-section="ch1">
-                    <span class="sidebar-icon">📖</span>一、软件概述
-                </a>
-                <a href="#ch2" class="sidebar-link" data-section="ch2">
-                    <span class="sidebar-icon">📥</span>二、安装与启动
-                </a>
-                <a href="#ch3" class="sidebar-link" data-section="ch3">
-                    <span class="sidebar-icon">🏠</span>三、首页与快捷入口
-                </a>
-                <a href="#ch4" class="sidebar-link" data-section="ch4">
-                    <span class="sidebar-icon">🔍</span>四、搜索与浏览器
-                </a>
-                <a href="#ch5" class="sidebar-link" data-section="ch5">
-                    <span class="sidebar-icon">▶️</span>五、视频播放
-                </a>
-                <a href="#ch6" class="sidebar-link" data-section="ch6">
-                    <span class="sidebar-icon">⬇️</span>六、视频下载
-                </a>
-                <a href="#ch7" class="sidebar-link" data-section="ch7">
-                    <span class="sidebar-icon">📁</span>七、已下载视频管理
-                </a>
-                <a href="#ch8" class="sidebar-link" data-section="ch8">
-                    <span class="sidebar-icon">🔖</span>八、书签与浏览历史
-                </a>
-                <a href="#ch9" class="sidebar-link" data-section="ch9">
-                    <span class="sidebar-icon">🎬</span>九、在线影院
-                </a>
-                <a href="#ch10" class="sidebar-link" data-section="ch10">
-                    <span class="sidebar-icon">📡</span>十、WiFi 文件快传
-                </a>
-                <a href="#ch11" class="sidebar-link" data-section="ch11">
-                    <span class="sidebar-icon">💬</span>十一、意见反馈
-                </a>
-                <a href="#ch12" class="sidebar-link" data-section="ch12">
-                    <span class="sidebar-icon">⚙️</span>十二、系统设置
-                </a>
-                <a href="#ch13" class="sidebar-link" data-section="ch13">
-                    <span class="sidebar-icon">❓</span>十三、常见问题
-                </a>
-                <a href="#ch14" class="sidebar-link" data-section="ch14">
-                    <span class="sidebar-icon">📩</span>十四、技术支持
-                </a>
-            </nav>
-        </aside>
-
-        <!-- Mobile Sidebar Toggle -->
-        <button class="sidebar-toggle" id="sidebarToggle" aria-label="打开目录">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M4 6h16M4 12h16M4 18h16"/>
-            </svg>
+<!-- Header -->
+<header class="header" id="header">
+    <div class="container">
+        <a href="index.html" class="logo">
+            <img src="logo.png" alt="有风无界" class="logo-img">
+            <span class="logo-text">有风无界</span>
+        </a>
+        <nav class="nav">
+            <a href="index.html" class="nav-link">首页</a>
+            <a href="index.html#download" class="nav-link nav-link--cta">下载应用</a>
+        </nav>
+        <button class="menu-toggle" id="menuToggle" aria-label="菜单">
+            <span></span>
+            <span></span>
+            <span></span>
         </button>
-
-        <!-- Content -->
-        <main class="content">
-
-            <!-- ======== 一、软件概述 ======== -->
-            <section class="content-section" id="ch1">
-                <div class="section-badge">01</div>
-                <h1 class="content-title">一、软件概述</h1>
-
-                <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">1.1 软件简介</h2>
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
-                    有风无界APP 是一款基于 Android 平台的流媒体浏览器工具，集多标签网页浏览、视频资源嗅探、在线播放（含边下边播）、多线程下载、M3U8 广告过滤、网页广告拦截、隐身模式、阅读模式、局域网投屏、WiFi 文件快传与意见反馈等功能于一体。
-                </p>
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:24px;">
-                    软件以"浏览器 + 免费网络视频播放"为核心，自动识别网页中的 M3U8 / MP4 视频资源，提供一键播放、下载、投屏、悬浮窗播放等完整视频处理能力，并内置智能广告过滤引擎，显著提升浏览与观影体验。
-                </p>
-
-                <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">1.2 运行环境</h2>
-                <table class="doc-table">
-                    <thead><tr><th>项目</th><th>要求</th></tr></thead>
-                    <tbody>
-                        <tr><td>操作系统</td><td>Android 7.0 (API 24) 及以上</td></tr>
-                        <tr><td>硬件要求</td><td>ARM64 CPU，RAM 2GB 以上</td></tr>
-                        <tr><td>存储空间</td><td>31MB（应用安装包大小）以上</td></tr>
-                        <tr><td>网络要求</td><td>支持 WiFi / 移动网络</td></tr>
-                    </tbody>
-                </table>
-
-                <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">1.3 功能总览</h2>
-                <table class="doc-table">
-                    <thead><tr><th>功能模块</th><th>核心能力</th></tr></thead>
-                    <tbody>
-                        <tr><td>多标签浏览器</td><td>多标签管理、隐身模式、标签持久化、域名跳转提示、历史记录</td></tr>
-                        <tr><td>广告拦截</td><td>网页广告过滤（EasyList/EasyPrivacy）</td></tr>
-                        <tr><td>视频嗅探</td><td>自动检测网页中的 M3U8 / MP4 视频资源</td></tr>
-                        <tr><td>视频播放器</td><td>ExoPlayer 全屏播放、手势控制、倍速、选集、片头片尾跳过</td></tr>
-                        <tr><td>边下边播</td><td>下载过程中即可播放，进度实时更新</td></tr>
-                        <tr><td>悬浮窗播放</td><td>可拖动小窗播放，通知栏控制，后台播放</td></tr>
-                        <tr><td>视频下载</td><td>M3U8 多线程下载、AES-128 解密、FFmpeg 合并、下载队列</td></tr>
-                        <tr><td>投屏播放</td><td>局域网 HTTP 投屏，电脑浏览器直接观看</td></tr>
-                        <tr><td>阅读模式</td><td>网页正文提取，多主题阅读</td></tr>
-                        <tr><td>书签与历史</td><td>书签管理、浏览历史、最近搜索</td></tr>
-                        <tr><td>在线影院</td><td>聚合在线视频资源入口</td></tr>
-                        <tr><td>文件快传</td><td>WiFi 局域网文件上传 / 下载</td></tr>
-                        <tr><td>隐身模式</td><td>独立数据凭证，浏览/书签/历史与主空间完全隔离</td></tr>
-                        <tr><td>意见反馈</td><td>在线工单反馈，支持图片与进度跟踪</td></tr>
-                    </tbody>
-                </table>
-            </section>
-
-            <!-- ======== 二、安装与启动 ======== -->
-            <section class="content-section" id="ch2">
-                <div class="section-badge">02</div>
-                <h1 class="content-title">二、安装与启动</h1>
-
-                <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">2.1 安装方式</h2>
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:20px;">
-                    下载 APK 安装包后，在 Android 设备上点击安装包，按系统提示完成安装。安装完成后桌面出现"有风无界"应用图标。
-                </p>
-
-                <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">2.2 启动与首次运行</h2>
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
-                    点击桌面图标启动应用，首先进入启动闪屏页，随后弹出《用户隐私政策》提示。首次使用时请阅读并同意隐私政策后进入应用首页。
-                </p>
-                <div class="doc-img-group">
-                    <img src="imgs/image1.jpg" alt="启动闪屏页" class="doc-img">
-                    <img src="imgs/image2.jpg" alt="隐私政策提示" class="doc-img">
-                </div>
-                <p class="doc-img-caption">图1：启动闪屏页</p>
-            </section>
-
-            <!-- ======== 三、首页与快捷入口 ======== -->
-            <section class="content-section" id="ch3">
-                <div class="section-badge">03</div>
-                <h1 class="content-title">三、首页与快捷入口</h1>
-
-                <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">3.1 首页界面</h2>
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
-                    启动后进入首页，界面自上而下由当前时间、应用 Logo、搜索框、快捷入口卡片区组成。快捷入口卡片支持自定义添加、排序与配色，常用功能一目了然。
-                </p>
-                <img src="imgs/image3.jpg" alt="首页完整界面" class="doc-img">
-                <p class="doc-img-caption">图2：首页完整界面（含时间、Logo、搜索框与快捷入口卡片）</p>
-
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin:16px 0;">首页固定卡片包括：</p>
-                <ul class="doc-list">
-                    <li><strong>在线影院：</strong>进入聚合在线视频资源列表</li>
-                    <li><strong>文件快传：</strong>WiFi 局域网文件互传</li>
-                    <li><strong>隐身模式：</strong>开启后书签、历史等数据与主空间隔离</li>
-                </ul>
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin:12px 0 16px;">
-                    其余功能（书签、历史、下载、主题、设置、搜索等）可通过"+"按钮添加到首页卡片区，长按卡片可调整顺序、更改颜色或移除。
-                </p>
-                <img src="imgs/image4.jpg" alt="首页卡片添加管理" class="doc-img">
-                <p class="doc-img-caption">图3：首页卡片添加 / 管理界面（点击"+"后的选择弹窗）</p>
-
-                <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">3.2 隐身模式</h2>
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
-                    点击首页"隐身模式"卡片开启隐身浏览。隐身模式下，浏览历史、书签、下载记录等全部数据与主空间完全隔离，退出后自动恢复主空间数据。
-                </p>
-                <div class="doc-img-group">
-                    <img src="imgs/image5.jpg" alt="隐身模式说明" class="doc-img">
-                    <img src="imgs/image6.jpg" alt="隐身模式首页指示" class="doc-img">
-                </div>
-                <p class="doc-img-caption">图4：隐身模式说明 / 确认弹窗，以及开启后的首页指示状态</p>
-
-                <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">3.3 底部导航工具栏</h2>
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
-                    浏览器主界面底部提供工具栏：首页、刷新、搜索、标签页、更多。其中"更多"菜单包含添加书签、书签、历史、我的下载、刷新、阅读模式、无痕模式（开启 / 退出）、分享链接、主题切换等常用功能入口，菜单底部提供设置快捷入口。（"在线影院""文件快传"等入口位于首页快捷卡片区，见 3.1 节。）
-                </p>
-                <img src="imgs/image7.jpg" alt="底部工具栏" class="doc-img">
-                <p class="doc-img-caption">图5：浏览器底部工具栏及"更多"菜单展开效果</p>
-            </section>
-
-            <!-- ======== 四、搜索与浏览器 ======== -->
-            <section class="content-section" id="ch4">
-                <div class="section-badge">04</div>
-                <h1 class="content-title">四、搜索与浏览器</h1>
-
-                <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">4.1 搜索与搜索引擎</h2>
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
-                    点击首页搜索框或底部"搜索"按钮，弹出底部搜索对话框。支持网址直接打开与关键词搜索两种模式；内置必应、夸克、Yandex、Yep、神马、百度、360、搜狗共 8 个搜索引擎，可在搜索框顶部横向切换；搜索历史自动记录，可一键清除。
-                </p>
-                <img src="imgs/image8.jpg" alt="搜索对话框" class="doc-img">
-                <p class="doc-img-caption">图6：搜索对话框（含搜索引擎切换栏与最近搜索记录）</p>
-
-                <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">4.2 多标签浏览</h2>
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:12px;">浏览器支持同时打开多个标签页：</p>
-                <ul class="doc-list">
-                    <li><strong>新建标签：</strong>工具栏 / 长按链接选择"新标签页打开"</li>
-                    <li><strong>标签切换：</strong>点击标签按钮弹出标签面板，可切换、关闭、全部关闭</li>
-                    <li><strong>标签持久化：</strong>标签页自动保存，应用重启后恢复</li>
-                    <li><strong>域名跳转提示：</strong>跨域跳转时弹出安全提示，拦截跳转第三方应用</li>
-                </ul>
-                <img src="imgs/image9.jpg" alt="浏览器网页浏览界面" class="doc-img">
-                <p class="doc-img-caption">图7：浏览器网页浏览界面（含顶部进度条、底部工具栏）</p>
-                <img src="imgs/image10.jpg" alt="多标签切换面板" class="doc-img">
-                <p class="doc-img-caption">图8：多标签切换面板（底部弹出的标签列表）</p>
-
-                <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">4.3 网页长按菜单</h2>
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
-                    在网页中长按链接、图片或文字，弹出上下文菜单，支持在新标签页打开、复制链接、识别/下载视频等操作。
-                </p>
-                <img src="imgs/image11.jpg" alt="网页长按右键菜单" class="doc-img">
-                <p class="doc-img-caption">图9：网页长按右键菜单效果</p>
-
-                <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">4.4 网页广告拦截</h2>
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
-                    基于 EasyList、EasyList China、EasyPrivacy 过滤规则，在网页加载时实时拦截广告请求并隐藏广告元素，无需配置即可生效，大幅减少弹窗与推广内容干扰。
-                </p>
-                <div class="doc-img-group">
-                    <img src="imgs/image12.jpg" alt="广告拦截前" class="doc-img">
-                    <img src="imgs/image13.jpg" alt="广告拦截后" class="doc-img">
-                </div>
-                <p class="doc-img-caption">图10：同一网页开启广告拦截后的效果</p>
-
-                <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">4.5 视频嗅探</h2>
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
-                    浏览器自动检测网页中的视频资源（M3U8 / MP4）。检测到视频后，页面边缘出现可拖拽的视频嗅探按钮并显示检测到的资源数量；点击该按钮即可将嗅探到的在线视频载入播放器直接播放，并支持在播放页内对在线资源执行下载、加入播放列表等操作。也可在网页空白处长按，通过"嗅探视频资源"手动触发嗅探。
-                </p>
-                <div class="doc-img-group">
-                    <img src="imgs/image14.jpg" alt="视频嗅探按钮" class="doc-img">
-                    <img src="imgs/image15.jpg" alt="嗅探到的资源" class="doc-img">
-                </div>
-                <p class="doc-img-caption">图11：视频嗅探浮动按钮及嗅探到的资源</p>
-
-                <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">4.6 阅读模式</h2>
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
-                    打开文字类网页时，通过"更多 → 阅读模式"进入纯净阅读界面，自动过滤广告与无关元素，支持 4 种阅读主题（暖黄 / 羊皮纸 / 护眼绿 / 暗色）与字号调节。
-                </p>
-                <img src="imgs/image16.jpg" alt="阅读模式界面" class="doc-img">
-                <p class="doc-img-caption">图12：阅读模式界面（含主题与字号调节按钮）</p>
-            </section>
-
-            <!-- ======== 五、视频播放 ======== -->
-            <section class="content-section" id="ch5">
-                <div class="section-badge">05</div>
-                <h1 class="content-title">五、视频播放</h1>
-
-                <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">5.1 播放器界面</h2>
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
-                    点击嗅探结果"播放"或已下载视频进入全屏播放器。播放器基于 ExoPlayer 构建，顶部显示标题与返回按钮，右侧提供投屏、悬浮窗、倍速等快捷按钮。
-                </p>
-                <img src="imgs/image17.jpg" alt="视频播放器全屏界面" class="doc-img">
-                <p class="doc-img-caption">图13：视频播放器全屏界面（含控制栏与右侧功能按钮）</p>
-
-                <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">5.2 手势控制</h2>
-                <table class="doc-table">
-                    <thead><tr><th>手势</th><th>操作</th></tr></thead>
-                    <tbody>
-                        <tr><td>单击</td><td>显示 / 隐藏控制栏</td></tr>
-                        <tr><td>双击左侧 1/3</td><td>快退（默认 10 秒，可在播放器设置中改为 5/10/15/30 秒）</td></tr>
-                        <tr><td>双击中部</td><td>暂停 / 播放</td></tr>
-                        <tr><td>双击右侧 1/3</td><td>快进（秒数同左，可在播放器设置中自定义）</td></tr>
-                        <tr><td>长按</td><td>2 倍速播放，配合上下滑动可锁定倍速或恢复 1x</td></tr>
-                        <tr><td>左右滑动</td><td>快进 / 快退</td></tr>
-                        <tr><td>左侧上下滑动</td><td>调节屏幕亮度</td></tr>
-                        <tr><td>右侧上下滑动</td><td>调节媒体音量</td></tr>
-                        <tr><td>全屏中部上下滑动</td><td>切换上一集 / 下一集</td></tr>
-                    </tbody>
-                </table>
-
-                <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">5.3 播放控制</h2>
-                <ul class="doc-list">
-                    <li><strong>倍速：</strong>0.5x / 0.75x / 1x / 1.5x / 2x / 2.5x / 3x 共 7 档可调</li>
-                    <li><strong>选集：</strong>播放列表切换（在线资源或已下载文件）</li>
-                    <li><strong>片头 / 片尾跳过：</strong>单击按钮将当前播放位置标记为片头 / 片尾时间，播放时自动跳过片头并播完片尾后自动切集；长按按钮可清除标记（仅对下载 / 本地视频生效）</li>
-                    <li><strong>双击快进 / 快退：</strong>时长可自定义（5 / 10 / 15 / 30 秒）</li>
-                    <li><strong>播放锁定：</strong>防止误触</li>
-                    <li><strong>播放进度记忆：</strong>退出后自动保存，再次播放可续播</li>
-                </ul>
-                <div class="doc-img-group">
-                    <img src="imgs/image18.jpg" alt="倍速设置" class="doc-img">
-                    <img src="imgs/image19.jpg" alt="播放列表与片头片尾" class="doc-img">
-                </div>
-                <p class="doc-img-caption">图14：倍速、播放列表与片头片尾设置</p>
-
-                <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">5.4 悬浮窗播放</h2>
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
-                    播放器点击"悬浮窗"按钮后，视频缩小为可拖动小窗悬浮于屏幕上，可继续浏览其他内容。支持拖动位置、点击播放 / 暂停、拖到底部关闭；前台服务保证后台持续播放，通知栏提供播放 / 暂停、上一集、下一集、关闭等控制。
-                </p>
-                <div class="doc-img-group">
-                    <img src="imgs/image20.jpg" alt="悬浮窗播放效果" class="doc-img">
-                    <img src="imgs/image21.jpg" alt="悬浮窗通知栏控制" class="doc-img">
-                </div>
-                <p class="doc-img-caption">图15：悬浮窗播放效果（置于其他应用之上）</p>
-
-                <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">5.5 投屏播放</h2>
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
-                    确保手机与电脑在同一局域网内，点击播放器"投屏"按钮，软件自动启动本地投屏服务并复制访问地址；在电脑浏览器中打开该地址即可在电脑上观看视频，同时支持播放列表切换。
-                </p>
-                <img src="imgs/image22.jpg" alt="投屏控制弹窗" class="doc-img">
-                <p class="doc-img-caption">图16：投屏控制弹窗（显示访问地址，可复制 / 停止）</p>
-                <img src="imgs/image23.jpg" alt="电脑浏览器中的投屏播放页面" class="doc-img">
-                <p class="doc-img-caption">图17：电脑浏览器中的投屏播放页面</p>
-
-                <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">5.6 边下边播</h2>
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
-                    下载任务进行中即可直接播放：在下载管理点击任务选择"边下边播"，播放器将已下载分片走本地、未下载分片走网络，无缝衔接播放，下载在后台持续追赶；播放页标题实时显示"已下载 xx%"，下载完成后自动无缝切换为完整视频。
-                </p>
-                <img src="imgs/image24.jpg" alt="边下边播菜单入口" class="doc-img">
-                <p class="doc-img-caption">图18：下载中任务点击"边下边播"的菜单入口</p>
-                <img src="imgs/image25.jpg" alt="边下边播播放界面" class="doc-img">
-                <p class="doc-img-caption">图19：边下边播播放界面（顶部标题显示已下载进度）</p>
-            </section>
-
-            <!-- ======== 六、视频下载 ======== -->
-            <section class="content-section" id="ch6">
-                <div class="section-badge">06</div>
-                <h1 class="content-title">六、视频下载</h1>
-
-                <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">6.1 下载方式</h2>
-                <ul class="doc-list">
-                    <li><strong>嗅探播放下载：</strong>点击视频嗅探按钮在线播放，播放页内直接触发下载</li>
-                    <li><strong>右键下载：</strong>长按视频链接选择"下载链接"</li>
-                    <li><strong>播放页下载：</strong>播放器内直接触发下载</li>
-                </ul>
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin:12px 0 16px;">触发后弹出下载确认弹窗，可确认任务信息后开始下载。</p>
-                <img src="imgs/image26.jpg" alt="视频下载确认弹窗" class="doc-img">
-                <p class="doc-img-caption">图20：视频下载确认弹窗</p>
-
-                <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">6.2 下载流程与能力</h2>
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:12px;">
-                    M3U8 视频下载流程：解析索引文件 → 智能过滤广告片段 → 多线程并发下载 TS 分片 → FFmpeg 自动合并为 MP4。
-                </p>
-                <ul class="doc-list">
-                    <li><strong>多线程下载：</strong>线程数 2 ~ 128 可配置，并具备自适应并发与域名限流经验优化</li>
-                    <li><strong>加密支持：</strong>AES-128 加密视频自动解密</li>
-                    <li><strong>广告过滤：</strong>关键词 + 统计分析双重检测，自动剔除广告片段</li>
-                    <li><strong>断点续传：</strong>支持暂停 / 恢复，网络中断自动暂停，恢复后自动继续</li>
-                </ul>
-
-                <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">6.3 下载设置</h2>
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
-                    在"下载管理 → 下载中"标签页点击"下载设置"，可配置下载线程数（2 / 4 / 8 / 16 / 32 / 64 / 96 / 128 共 8 档）与"仅 WiFi 下载"开关，设置即时生效。开启"仅 WiFi"后，非 WiFi 网络下不会消耗移动数据；WiFi 断开自动暂停下载，恢复后自动继续。下载确认弹窗中也可单独勾选"仅 WiFi"。
-                </p>
-                <img src="imgs/image27.jpg" alt="下载设置弹窗" class="doc-img">
-                <p class="doc-img-caption">图21：下载设置弹窗（线程数选择 + 仅 WiFi 开关）</p>
-
-                <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">6.4 下载管理</h2>
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:12px;">
-                    "下载"入口进入下载管理面板，分为"下载中"与"已下载"两个标签页。
-                </p>
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
-                    <strong>下载中：</strong>显示任务进度、下载速度、预计剩余时间，支持暂停 / 恢复、置顶 / 排序、删除。
-                </p>
-                <img src="imgs/image28.jpg" alt="下载中列表" class="doc-img">
-                <p class="doc-img-caption">图22：下载中列表（含进度条、速度、暂停 / 恢复按钮）</p>
-            </section>
-
-            <!-- ======== 七、已下载视频管理 ======== -->
-            <section class="content-section" id="ch7">
-                <div class="section-badge">07</div>
-                <h1 class="content-title">七、已下载视频管理</h1>
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:12px;">
-                    "已下载"标签页按文件夹分组展示已完成的视频，支持：
-                </p>
-                <ul class="doc-list">
-                    <li><strong>缩略图：</strong>自动生成视频封面</li>
-                    <li><strong>排序：</strong>按名称自然排序 / 时间排序</li>
-                    <li><strong>播放：</strong>点击直接进入播放器</li>
-                    <li><strong>批量操作：</strong>多选后批量删除、批量改文件夹</li>
-                    <li><strong>重命名 / 改扩展名 / 修改文件夹 / 复制链接</strong></li>
-                    <li><strong>边下边播：</strong>已完成任务可继续进入播放器</li>
-                </ul>
-                <img src="imgs/image29.jpg" alt="已下载列表" class="doc-img">
-                <p class="doc-img-caption">图23：已下载列表（文件夹分组 + 缩略图）</p>
-                <img src="imgs/image30.jpg" alt="已下载多选批量操作" class="doc-img">
-                <p class="doc-img-caption">图24：已下载多选批量操作界面</p>
-            </section>
-
-            <!-- ======== 八、书签与浏览历史 ======== -->
-            <section class="content-section" id="ch8">
-                <div class="section-badge">08</div>
-                <h1 class="content-title">八、书签与浏览历史</h1>
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:12px;">
-                    "书签"入口打开书签与历史合并面板，包含"书签"与"历史"两个标签页。
-                </p>
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:12px;">
-                    <strong>书签：</strong>支持添加当前页为书签、查看书签列表、点击在新标签页打开、复制链接、删除；浏览时可一键为当前页面添加书签。
-                </p>
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:12px;">
-                    <strong>历史：</strong>自动记录浏览记录，双列网格展示标题、网址与相对时间，支持单条删除与清空全部。
-                </p>
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
-                    此外，搜索历史自动保存，可一键清除。隐身模式下的书签与历史与主空间完全隔离。
-                </p>
-                <img src="imgs/image31.jpg" alt="书签与历史合并面板" class="doc-img">
-                <p class="doc-img-caption">图25：书签与历史合并面板（书签标签页）</p>
-                <img src="imgs/image32.jpg" alt="历史记录标签页" class="doc-img">
-                <p class="doc-img-caption">图26：历史记录标签页（双列网格 + 清除按钮）</p>
-            </section>
-
-            <!-- ======== 九、在线影院 ======== -->
-            <section class="content-section" id="ch9">
-                <div class="section-badge">09</div>
-                <h1 class="content-title">九、在线影院</h1>
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
-                    点击首页"在线影院"卡片进入聚合在线视频资源页面，展示可观看的视频列表；点击视频可进入播放器直接播放。
-                </p>
-                <img src="imgs/image33.jpg" alt="在线影院页面" class="doc-img">
-                <p class="doc-img-caption">图27：在线影院页面（视频列表）</p>
-            </section>
-
-            <!-- ======== 十、WiFi 文件快传 ======== -->
-            <section class="content-section" id="ch10">
-                <div class="section-badge">10</div>
-                <h1 class="content-title">十、WiFi 文件快传</h1>
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:12px;">
-                    点击首页"文件快传"卡片进入文件传输面板，实现同一局域网内手机与电脑之间的文件互传，无需数据线：
-                </p>
-                <ol class="doc-list" style="list-style-type:decimal;">
-                    <li>确认手机与电脑连接同一 WiFi</li>
-                    <li>在面板中点击"选择目录"指定共享文件夹</li>
-                    <li>启动服务后复制显示的访问地址</li>
-                    <li>在电脑浏览器中打开地址，即可浏览、上传、下载文件</li>
-                </ol>
-                <img src="imgs/image34.jpg" alt="文件快传面板" class="doc-img">
-                <p class="doc-img-caption">图28：文件快传面板（WiFi 状态、目录选择、访问地址与复制）</p>
-            </section>
-
-            <!-- ======== 十一、意见反馈 ======== -->
-            <section class="content-section" id="ch11">
-                <div class="section-badge">11</div>
-                <h1 class="content-title">十一、意见反馈</h1>
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
-                    "设置 → 意见反馈"进入反馈提交页面，填写分类、标题、问题描述并上传截图后提交；"设置 → 我的反馈"可查看全部工单记录，工单以对话形式管理，可随时查看回复并继续交流，支持关闭 / 重新开启工单。
-                </p>
-                <img src="imgs/image35.jpg" alt="意见反馈提交表单" class="doc-img">
-                <p class="doc-img-caption">图29：意见反馈提交表单（分类、标题、描述、上传图片）</p>
-                <div class="doc-img-group">
-                    <img src="imgs/image36.jpg" alt="我的反馈工单列表" class="doc-img">
-                    <img src="imgs/image37.jpg" alt="工单详情" class="doc-img">
-                </div>
-                <p class="doc-img-caption">图30：我的反馈工单列表</p>
-            </section>
-
-            <!-- ======== 十二、系统设置 ======== -->
-            <section class="content-section" id="ch12">
-                <div class="section-badge">12</div>
-                <h1 class="content-title">十二、系统设置</h1>
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
-                    首页"设置"按钮或"更多 → 设置"打开设置面板，主要设置项如下：
-                </p>
-                <table class="doc-table">
-                    <thead><tr><th>设置项</th><th>说明</th></tr></thead>
-                    <tbody>
-                        <tr><td>启动页设置</td><td>设置应用启动时打开的页面（可选恢复上次浏览，可恢复默认）</td></tr>
-                        <tr><td>切换 UA</td><td>切换浏览器标识（如桌面版 User-Agent），适配部分网页</td></tr>
-                        <tr><td>加载超时时间</td><td>设置网页加载超时时长</td></tr>
-                        <tr><td>恢复上次会话</td><td>开启后重启应用自动恢复上次打开的标签页</td></tr>
-                        <tr><td>强制页面缩放</td><td>允许在网页中通过手势缩放页面</td></tr>
-                        <tr><td>预加载模式</td><td>骨架屏、DNS 预解析等网页加载优化</td></tr>
-                        <tr><td>广告拦截</td><td>开启 / 关闭网页广告拦截功能</td></tr>
-                        <tr><td>隐身模式</td><td>进入 / 退出隐身模式</td></tr>
-                        <tr><td>清除缓存</td><td>清理应用缓存数据</td></tr>
-                        <tr><td>清空历史记录</td><td>删除全部浏览历史（不可恢复）</td></tr>
-                        <tr><td>图标库</td><td>浏览内置图标</td></tr>
-                        <tr><td>意见反馈</td><td>进入意见反馈提交页</td></tr>
-                        <tr><td>我的反馈</td><td>查看已提交的反馈工单</td></tr>
-                        <tr><td>关于</td><td>查看软件版本与相关信息</td></tr>
-                        <tr><td>恢复默认设置</td><td>将所有设置重置为出厂默认值</td></tr>
-                    </tbody>
-                </table>
-                <img src="imgs/image38.jpg" alt="设置面板整体界面" class="doc-img">
-                <p class="doc-img-caption">图31：设置面板整体界面</p>
-
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin:20px 0 16px;">
-                    主题切换入口位于首页主题按钮及"更多"菜单 → 主题切换，支持浅色 / 深色 / 跟随系统三种模式。
-                </p>
-                <img src="imgs/image39.jpg" alt="主题选择弹窗" class="doc-img">
-                <p class="doc-img-caption">图32：主题选择弹窗（浅色 / 深色 / 跟随系统）</p>
-            </section>
-
-            <!-- ======== 十三、常见问题 ======== -->
-            <section class="content-section" id="ch13">
-                <div class="section-badge">13</div>
-                <h1 class="content-title">十三、常见问题</h1>
-                <div class="faq-list">
-                    <div class="faq-item active">
-                        <button class="faq-trigger">
-                            <span class="faq-question">Q：下载速度慢怎么办？</span>
-                            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-                        </button>
-                        <div class="faq-answer">
-                            <p>在下载设置中提高下载线程数可显著提升速度；软件也会根据网络情况自适应调整并发并记录最佳线程数。</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-trigger">
-                            <span class="faq-question">Q：智能广告过滤会影响正常播放吗？</span>
-                            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-                        </button>
-                        <div class="faq-answer">
-                            <p>智能过滤主要针对推广内容片段，正常情况下不影响正片播放。如出现误过滤，可在设置中关闭或通过"意见反馈"告知我们。</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-trigger">
-                            <span class="faq-question">Q：投屏功能如何使用？</span>
-                            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-                        </button>
-                        <div class="faq-answer">
-                            <p>手机与电脑需在同一局域网，在播放器中点击投屏按钮，再在电脑浏览器打开提示地址即可。</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-trigger">
-                            <span class="faq-question">Q：下载的视频保存在哪里？</span>
-                            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-                        </button>
-                        <div class="faq-answer">
-                            <p>视频保存在应用私有存储目录，可在"下载管理 → 已下载"中查看、播放与操作。</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-trigger">
-                            <span class="faq-question">Q：如何边下载边播放？</span>
-                            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-                        </button>
-                        <div class="faq-answer">
-                            <p>在"下载管理 → 下载中"点击正在下载的任务，选择"边下边播"即可。</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-trigger">
-                            <span class="faq-question">Q：隐身模式和普通浏览有什么区别？</span>
-                            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-                        </button>
-                        <div class="faq-answer">
-                            <p>隐身模式使用独立数据空间，书签、历史、下载等与主空间隔离，退出后自动恢复主空间数据。</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- ======== 十四、技术支持 ======== -->
-            <section class="content-section" id="ch14">
-                <div class="section-badge">14</div>
-                <h1 class="content-title">十四、技术支持</h1>
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:12px;">
-                    本软件著作权归赵鑫所有。
-                </p>
-                <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:12px;">
-                    用户在软件使用过程中，如遇到软件相关问题，可通过软件内意见反馈模块提交问题。
-                </p>
-            </section>
-
-            <!-- Back to Home -->
-            <div class="content-footer">
-                <a href="index.html" class="btn btn--primary">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
-                        <path d="M19 12H5M12 19l-7-7 7-7"/>
-                    </svg>
-                    返回首页
-                </a>
-                <a href="index.html#download" class="btn btn--secondary">下载应用</a>
-            </div>
-        </main>
     </div>
+</header>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <div class="footer-logo">
-                        <img src="logo.png" alt="有风无界" class="footer-logo-img">
-                        <span>有风无界</span>
-                    </div>
-                    <p class="footer-copyright">© 2026 Ziro Xin. All rights reserved.</p>
-                </div>
-                <div class="footer-links">
-                    <a href="index.html">首页</a>
-                    <a href="index.html#features">功能</a>
-                    <a href="index.html#changelog">更新日志</a>
-                    <a href="index.html#download">下载</a>
-                </div>
-            </div>
+<!-- Main Layout -->
+<div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <span class="sidebar-title">使用说明书</span>
+            <span class="sidebar-version">V1.0.10</span>
         </div>
-    </footer>
+        <nav class="sidebar-nav">
+            <a href="#ch1" class="sidebar-link active" data-section="ch1">
+                <span class="sidebar-icon">📖</span>一、&nbsp;&nbsp;&nbsp;&nbsp;简介
+            </a>
+            <a href="#ch2" class="sidebar-link" data-section="ch2">
+                <span class="sidebar-icon">📥</span>二、&nbsp;&nbsp;&nbsp;&nbsp;安装
+            </a>
+            <a href="#ch3" class="sidebar-link" data-section="ch3">
+                <span class="sidebar-icon">🏠</span>三、&nbsp;&nbsp;&nbsp;&nbsp;首页
+            </a>
+            <a href="#ch4" class="sidebar-link" data-section="ch4">
+                <span class="sidebar-icon">🔍</span>四、&nbsp;&nbsp;&nbsp;&nbsp;浏览器
+            </a>
+            <a href="#ch5" class="sidebar-link" data-section="ch5">
+                <span class="sidebar-icon">▶️</span>五、&nbsp;&nbsp;&nbsp;&nbsp;专属播放器
+            </a>
+            <a href="#ch6" class="sidebar-link" data-section="ch6">
+                <span class="sidebar-icon">⬇️</span>六、&nbsp;&nbsp;&nbsp;&nbsp;嗅探&下载
+            </a>
+            <a href="#ch7" class="sidebar-link" data-section="ch7">
+                <span class="sidebar-icon">📁</span>七、&nbsp;&nbsp;&nbsp;&nbsp;已下载
+            </a>
+            <a href="#ch8" class="sidebar-link" data-section="ch8">
+                <span class="sidebar-icon">🔖</span>八、&nbsp;&nbsp;&nbsp;&nbsp;书签&历史
+            </a>
+            <a href="#ch9" class="sidebar-link" data-section="ch9">
+                <span class="sidebar-icon">🎬</span>九、&nbsp;&nbsp;&nbsp;&nbsp;剧助手
+            </a>
+            <a href="#ch10" class="sidebar-link" data-section="ch10">
+                <span class="sidebar-icon">📡</span>十、&nbsp;&nbsp;&nbsp;&nbsp;互传
+            </a>
+            <a href="#ch11" class="sidebar-link" data-section="ch11">
+                <span class="sidebar-icon">💬</span>十一、反馈
+            </a>
+            <a href="#ch12" class="sidebar-link" data-section="ch12">
+                <span class="sidebar-icon">⚙️</span>十二、设置
+            </a>
+            <a href="#ch13" class="sidebar-link" data-section="ch13">
+                <span class="sidebar-icon">❓</span>十三、FAQ
+            </a>
+            <a href="#ch14" class="sidebar-link" data-section="ch14">
+                <span class="sidebar-icon">📩</span>十四、关于
+            </a>
+        </nav>
+    </aside>
 
-    <!-- Back to Top -->
-    <button class="back-to-top" id="backToTop" aria-label="回到顶部">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20">
-            <path d="M18 15l-6-6-6 6"/>
+    <!-- Mobile Sidebar Toggle -->
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="打开目录">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
     </button>
 
-    <script src="guide-script.js"></script>
+    <!-- Content -->
+    <main class="content">
+
+        <!-- ======== 一、软件概述 ======== -->
+        <section class="content-section" id="ch1">
+            <div class="section-badge">01</div>
+            <h1 class="content-title">一、软件概述</h1>
+
+            <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">1.1 软件简介</h2>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
+                有风无界APP 是一款基于 Android 平台的流媒体浏览器工具，
+                主要功能：多标签浏览器、视频嗅探、在线播放、多线程下载、边下边播、广告拦截、隐身模式、无痕模式、阅读模式、视频投屏、文件互传等。
+            </p>
+
+            <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">1.2 运行环境</h2>
+            <table class="doc-table">
+                <thead>
+                <tr>
+                    <th>项目</th>
+                    <th>要求</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>操作系统</td>
+                    <td>Android 7.0 (API 24) 及以上</td>
+                </tr>
+                <tr>
+                    <td>硬件要求</td>
+                    <td>建议 2016 年后发布的手机，过旧设备可能无法正常使用</td>
+                </tr>
+                <tr>
+                    <td>存储空间</td>
+                    <td>~46MB 以上（含安装包与运行缓存）</td>
+                </tr>
+                <tr>
+                    <td>网络要求</td>
+                    <td>支持 WiFi / 移动网络</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">1.3 功能总览</h2>
+            <table class="doc-table">
+                <thead>
+                <tr>
+                    <th>功能模块</th>
+                    <th>核心能力</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>多标签浏览器</td>
+                    <td>
+                        多标签管理、书签、历史记录、无痕模式、标签持久化、第三方网站拦截、第三方APP拦截、右键功能
+                    </td>
+                </tr>
+                <tr>
+                    <td>广告拦截</td>
+                    <td>网页广告过滤（EasyList/EasyPrivacy）</td>
+                </tr>
+                <tr>
+                    <td>视频嗅探</td>
+                    <td>自动识别网页中的音视频资源，支持 M3U8 / MP4 等8种常见音视频格式</td>
+                </tr>
+                <tr>
+                    <td>剧助手</td>
+                    <td>
+                        追美剧、追韩剧、追日剧，一键采集剧集，自动分析视频链接，一键创建下载任务，爽到飞起~
+                    </td>
+                </tr>
+                <tr>
+                    <td>专属播放器</td>
+                    <td>基于 ExoPlayer
+                        定制，超多细节优化，手势、倍速、选集、片头/尾跳过、全屏、小窗，精心打磨，惊喜不断！
+                    </td>
+                </tr>
+                <tr>
+                    <td>视频下载</td>
+                    <td>多线程下载，完全不限速！下载速度的上限，取决于你的宽带上限~</td>
+                </tr>
+                <tr>
+                    <td>边下边播</td>
+                    <td>下载等不及？立即就能播，进度实时更新，优先播放本地源</td>
+                </tr>
+                <tr>
+                    <td>小窗播放</td>
+                    <td>大小任意调，位置随便拖，上层播放！回微信、逛淘宝完全不耽误追剧，无缝衔接</td>
+                </tr>
+                <tr>
+                    <td>投屏</td>
+                    <td>
+                        电视安装配套PC投屏软件，一键投屏，自动播放；PC端打开浏览器，粘贴投屏地址，立即播放；支持切换选集
+                    </td>
+                </tr>
+                <tr>
+                    <td>阅读模式</td>
+                    <td>网页正文提取，多主题阅读</td>
+                </tr>
+                <tr>
+                    <td>书签与历史</td>
+                    <td>书签管理、浏览历史、最近搜索</td>
+                </tr>
+                <tr>
+                    <td>在线影院</td>
+                    <td>聚合在线视频资源入口</td>
+                </tr>
+                <tr>
+                    <td>文件快传</td>
+                    <td>手机、电脑
+                        互传文件，轻松便捷！无需数据线，同WiFi文件传输，速度比U盘还快，一键开启
+                    </td>
+                </tr>
+                <tr>
+                    <td>隐身模式</td>
+                    <td>浏览器记录怕被看到？一键隐藏所有使用痕迹，随便看！用完一键恢复。酷不酷~</td>
+                </tr>
+                <tr>
+                    <td>意见反馈</td>
+                    <td>有任何使用问题或者功能建议，都可以通过在线工单反馈~/td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ======== 二、安装与启动 ======== -->
+        <section class="content-section" id="ch2">
+            <div class="section-badge">02</div>
+            <h1 class="content-title">二、安装与启动</h1>
+
+            <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">2.1 安装方式</h2>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:20px;">
+                下载 APK 安装包后，在 Android 设备上点击安装包，按系统提示完成安装。安装完成后桌面出现"有风无界"应用图标。
+            </p>
+
+            <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">2.2 启动与首次运行</h2>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
+                点击桌面图标启动应用，首先进入启动闪屏页，随后弹出《用户隐私政策》提示。首次使用时请阅读并同意隐私政策后进入应用首页。
+            </p>
+            <div class="doc-img-group">
+                <img src="imgs/image1.jpg" alt="启动闪屏页" class="doc-img">
+                <img src="imgs/image2.jpg" alt="隐私政策提示" class="doc-img">
+            </div>
+            <p class="doc-img-caption">图1：启动闪屏页</p>
+        </section>
+
+        <!-- ======== 三、首页与快捷入口 ======== -->
+        <section class="content-section" id="ch3">
+            <div class="section-badge">03</div>
+            <h1 class="content-title">三、首页与快捷入口</h1>
+
+            <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">3.1 首页界面</h2>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
+                启动后进入首页，界面自上而下由当前时间、应用
+                Logo、搜索框、快捷入口卡片区组成。快捷入口卡片支持自定义添加、排序与配色，常用功能一目了然。
+            </p>
+            <img src="imgs/image3.jpg" alt="首页完整界面" class="doc-img">
+            <p class="doc-img-caption">图2：首页完整界面（含时间、Logo、搜索框与快捷入口卡片）</p>
+
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin:16px 0;">
+                首页固定卡片包括：</p>
+            <ul class="doc-list">
+                <li><strong>在线影院：</strong>进入聚合在线视频资源列表</li>
+                <li><strong>文件快传：</strong>手机、电脑 互传文件，轻松便捷！无需数据线，同WiFi文件传输，速度比U盘还快，一键开启
+                </li>
+                <li><strong>隐身模式：</strong>浏览器记录怕被看到？一键隐藏所有使用痕迹，随便看！用完一键恢复。酷不酷~
+                </li>
+            </ul>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin:12px 0 16px;">
+                其余功能（书签、历史、下载、主题、设置、搜索等）可通过"+"按钮添加到首页卡片区，长按卡片可调整顺序、更改颜色或移除。
+            </p>
+            <img src="imgs/image4.jpg" alt="首页卡片添加管理" class="doc-img">
+            <p class="doc-img-caption">图3：首页卡片添加 / 管理界面（点击"+"后的选择弹窗）</p>
+
+            <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">3.2 隐身模式</h2>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
+                点击首页"隐身模式"卡片开启隐身浏览。隐身模式下，浏览历史、书签、下载记录等全部数据与主空间完全隔离，退出后自动恢复主空间数据。
+            </p>
+            <div class="doc-img-group">
+                <img src="imgs/image5.jpg" alt="隐身模式说明" class="doc-img">
+                <img src="imgs/image6.jpg" alt="隐身模式首页指示" class="doc-img">
+            </div>
+            <p class="doc-img-caption">图4：隐身模式说明 / 确认弹窗，以及开启后的首页指示状态</p>
+            <ul class="doc-list">
+                <li><strong>退出隐身模式：</strong>更多设置 > 隐私与安全 > 退出隐身模式，点击此按钮一键退出！
+                </li>
+            </ul>
+
+            <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">3.3 底部导航工具栏</h2>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
+                浏览器主界面底部提供工具栏：首页、刷新、搜索、标签页、更多。<br/>
+                其中"更多"菜单包含添加书签、书签、历史、我的下载、刷新、阅读模式、无痕模式（开启/退出）、分享链接、主题切换、剧助手等常用功能入口，右下角有更多设置的快捷入口。
+            </p>
+            <img src="imgs/image7.jpg" alt="底部工具栏" class="doc-img">
+            <p class="doc-img-caption">图5：浏览器底部工具栏及"更多"菜单展开效果</p>
+        </section>
+
+        <!-- ======== 四、搜索与浏览器 ======== -->
+        <section class="content-section" id="ch4">
+            <div class="section-badge">04</div>
+            <h1 class="content-title">四、搜索与浏览器</h1>
+
+            <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">4.1 搜索与搜索引擎</h2>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
+                点击首页搜索框或底部"搜索"按钮，弹出底部搜索对话框。支持网址直接打开与关键词搜索两种模式；内置必应、夸克、Yandex、Yep、神马、百度、360、搜狗共
+                8 个搜索引擎，可在搜索框顶部横向切换；搜索历史自动记录，可一键清除。
+            </p>
+            <img src="imgs/image8.jpg" alt="搜索对话框" class="doc-img">
+            <p class="doc-img-caption">图6：搜索对话框（含搜索引擎切换栏与最近搜索记录）</p>
+
+            <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">4.2 多标签浏览</h2>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:12px;">
+                浏览器支持同时打开多个标签页：</p>
+            <ul class="doc-list">
+                <li><strong>新建标签：</strong>工具栏 / 长按链接选择"新标签页打开"</li>
+                <li><strong>标签切换：</strong>点击标签按钮弹出标签面板，可切换、关闭、全部关闭</li>
+                <li><strong>标签持久化：</strong>标签页自动保存，应用重启后恢复</li>
+                <li><strong>域名跳转提示：</strong>跨域跳转时弹出安全提示，拦截跳转第三方应用</li>
+            </ul>
+            <img src="imgs/image9.jpg" alt="浏览器网页浏览界面" class="doc-img">
+            <p class="doc-img-caption">图7：浏览器网页浏览界面（含顶部进度条、底部工具栏）</p>
+            <img src="imgs/image10.jpg" alt="多标签切换面板" class="doc-img">
+            <p class="doc-img-caption">图8：多标签切换面板（底部弹出的标签列表）</p>
+
+            <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">4.3 网页长按菜单</h2>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
+                在网页中长按链接、图片或文字，弹出上下文菜单，支持在新标签页打开、复制链接、识别/下载视频等操作。
+            </p>
+            <img src="imgs/image11.jpg" alt="网页长按右键菜单" class="doc-img">
+            <p class="doc-img-caption">图9：网页长按右键菜单效果</p>
+
+            <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">4.4 网页广告拦截</h2>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
+                基于 EasyList、EasyList China、EasyPrivacy
+                过滤规则，在网页加载时实时拦截广告请求并隐藏广告元素，无需配置即可生效，大幅减少弹窗与推广内容干扰。
+            </p>
+            <div class="doc-img-group">
+                <img src="imgs/image12.jpg" alt="广告拦截前" class="doc-img">
+                <img src="imgs/image13.jpg" alt="广告拦截后" class="doc-img">
+            </div>
+            <p class="doc-img-caption">图10：同一网页开启广告拦截后的效果</p>
+
+            <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">4.5 视频嗅探</h2>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
+                浏览器自动检测网页中的视频资源（M3U8 /
+                MP4）。检测到视频后，页面边缘出现可拖拽的视频嗅探按钮并显示检测到的资源数量；点击该按钮即可将嗅探到的在线视频载入播放器直接播放，并支持在播放页内对在线资源执行下载、加入播放列表等操作。也可在网页空白处长按，通过"嗅探视频资源"手动触发嗅探。
+            </p>
+            <div class="doc-img-group">
+                <img src="imgs/image14.jpg" alt="视频嗅探按钮" class="doc-img">
+                <img src="imgs/image15.jpg" alt="嗅探到的资源" class="doc-img">
+            </div>
+            <p class="doc-img-caption">图11：视频嗅探浮动按钮及嗅探到的资源</p>
+
+            <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">4.6 阅读模式</h2>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
+                打开文字类网页时，通过"更多 → 阅读模式"进入纯净阅读界面，自动过滤广告与无关元素，支持 4
+                种阅读主题（暖黄 / 羊皮纸 / 护眼绿 / 暗色）与字号调节。
+            </p>
+            <img src="imgs/image16.jpg" alt="阅读模式界面" class="doc-img">
+            <p class="doc-img-caption">图12：阅读模式界面（含主题与字号调节按钮）</p>
+        </section>
+
+        <!-- ======== 五、视频播放 ======== -->
+        <section class="content-section" id="ch5">
+            <div class="section-badge">05</div>
+            <h1 class="content-title">五、视频播放</h1>
+
+            <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">5.1 播放器界面</h2>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
+                点击嗅探结果"播放"或已下载视频进入全屏播放器。播放器基于 ExoPlayer
+                构建，顶部显示标题与返回按钮，右侧提供投屏、悬浮窗、倍速等快捷按钮。
+            </p>
+            <img src="imgs/image17.jpg" alt="视频播放器全屏界面" class="doc-img">
+            <p class="doc-img-caption">图13：视频播放器全屏界面（含控制栏与右侧功能按钮）</p>
+
+            <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">5.2 手势控制</h2>
+            <table class="doc-table">
+                <thead>
+                <tr>
+                    <th>手势</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>单击</td>
+                    <td>显示 / 隐藏控制栏</td>
+                </tr>
+                <tr>
+                    <td>双击左侧 1/3</td>
+                    <td>快退（默认 10 秒，可在播放器设置中改为 5/10/15/30 秒）</td>
+                </tr>
+                <tr>
+                    <td>双击中部</td>
+                    <td>暂停 / 播放</td>
+                </tr>
+                <tr>
+                    <td>双击右侧 1/3</td>
+                    <td>快进（秒数同左，可在播放器设置中自定义）</td>
+                </tr>
+                <tr>
+                    <td>长按</td>
+                    <td>2 倍速播放，配合上下滑动可锁定倍速或恢复 1x</td>
+                </tr>
+                <tr>
+                    <td>左右滑动</td>
+                    <td>快进 / 快退</td>
+                </tr>
+                <tr>
+                    <td>左侧上下滑动</td>
+                    <td>调节屏幕亮度</td>
+                </tr>
+                <tr>
+                    <td>右侧上下滑动</td>
+                    <td>调节媒体音量</td>
+                </tr>
+                <tr>
+                    <td>全屏中部上下滑动</td>
+                    <td>切换上一集 / 下一集</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">5.3 播放控制</h2>
+            <ul class="doc-list">
+                <li><strong>倍速：</strong>0.5x / 0.75x / 1x / 1.5x / 2x / 2.5x / 3x 共 7 档可调</li>
+                <li><strong>选集：</strong>播放列表切换（在线资源或已下载文件）</li>
+                <li><strong>片头 / 片尾跳过：</strong>单击按钮将当前播放位置标记为片头 /
+                    片尾时间，播放时自动跳过片头并播完片尾后自动切集；长按按钮可清除标记（仅对下载 /
+                    本地视频生效）
+                </li>
+                <li><strong>双击快进 / 快退：</strong>时长可自定义（5 / 10 / 15 / 30 秒）</li>
+                <li><strong>播放锁定：</strong>防止误触</li>
+                <li><strong>播放进度记忆：</strong>退出后自动保存，再次播放可续播</li>
+            </ul>
+            <div class="doc-img-group">
+                <img src="imgs/image18.jpg" alt="倍速设置" class="doc-img">
+                <img src="imgs/image19.jpg" alt="播放列表与片头片尾" class="doc-img">
+            </div>
+            <p class="doc-img-caption">图14：倍速、播放列表与片头片尾设置</p>
+
+            <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">5.4 悬浮窗播放</h2>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
+                播放器点击"悬浮窗"按钮后，视频缩小为可拖动小窗悬浮于屏幕上，可继续浏览其他内容。支持拖动位置、点击播放
+                / 暂停、拖到底部关闭；前台服务保证后台持续播放，通知栏提供播放 / 暂停、上一集、下一集、关闭等控制。
+            </p>
+            <div class="doc-img-group">
+                <img src="imgs/image20.jpg" alt="悬浮窗播放效果" class="doc-img">
+                <img src="imgs/image21.jpg" alt="悬浮窗通知栏控制" class="doc-img">
+            </div>
+            <p class="doc-img-caption">图15：悬浮窗播放效果（置于其他应用之上）</p>
+
+            <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">5.5 投屏播放</h2>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
+                确保手机与电脑在同一局域网内，点击播放器"投屏"按钮，软件自动启动本地投屏服务并复制访问地址；在电脑浏览器中打开该地址即可在电脑上观看视频，同时支持播放列表切换。
+            </p>
+            <img src="imgs/image22.jpg" alt="投屏控制弹窗" class="doc-img">
+            <p class="doc-img-caption">图16：投屏控制弹窗（显示访问地址，可复制 / 停止）</p>
+            <img src="imgs/image23.jpg" alt="电脑浏览器中的投屏播放页面" class="doc-img">
+            <p class="doc-img-caption">图17：电脑浏览器中的投屏播放页面</p>
+
+            <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">5.6 边下边播</h2>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
+                下载任务进行中即可直接播放：在下载管理点击任务选择"边下边播"，播放器将已下载分片走本地、未下载分片走网络，无缝衔接播放，下载在后台持续追赶；播放页标题实时显示"已下载
+                xx%"，下载完成后自动无缝切换为完整视频。
+            </p>
+            <img src="imgs/image24.jpg" alt="边下边播菜单入口" class="doc-img">
+            <p class="doc-img-caption">图18：下载中任务点击"边下边播"的菜单入口</p>
+            <img src="imgs/image25.jpg" alt="边下边播播放界面" class="doc-img">
+            <p class="doc-img-caption">图19：边下边播播放界面（顶部标题显示已下载进度）</p>
+        </section>
+
+        <!-- ======== 六、视频下载 ======== -->
+        <section class="content-section" id="ch6">
+            <div class="section-badge">06</div>
+            <h1 class="content-title">六、视频下载</h1>
+
+            <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">6.1 下载方式</h2>
+            <ul class="doc-list">
+                <li><strong>嗅探播放下载：</strong>点击视频嗅探按钮在线播放，播放页内直接触发下载</li>
+                <li><strong>右键下载：</strong>长按视频链接选择"下载链接"</li>
+                <li><strong>播放页下载：</strong>播放器内直接触发下载</li>
+            </ul>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin:12px 0 16px;">
+                触发后弹出下载确认弹窗，可确认任务信息后开始下载。</p>
+            <img src="imgs/image26.jpg" alt="视频下载确认弹窗" class="doc-img">
+            <p class="doc-img-caption">图20：视频下载确认弹窗</p>
+
+            <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">6.2 下载流程与能力</h2>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:12px;">
+                M3U8 视频下载流程：解析索引文件 → 智能过滤广告片段 → 多线程并发下载 TS 分片 → FFmpeg
+                自动合并为 MP4。
+            </p>
+            <ul class="doc-list">
+                <li><strong>多线程下载：</strong>线程数 2 ~ 128 可配置，并具备自适应并发与域名限流经验优化
+                </li>
+                <li><strong>加密支持：</strong>AES-128 加密视频自动解密</li>
+                <li><strong>广告过滤：</strong>关键词 + 统计分析双重检测，自动剔除广告片段</li>
+                <li><strong>断点续传：</strong>支持暂停 / 恢复，网络中断自动暂停，恢复后自动继续</li>
+            </ul>
+
+            <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">6.3 下载设置</h2>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
+                在"下载管理 → 下载中"标签页点击"下载设置"，可配置下载线程数（2 / 4 / 8 / 16 / 32 / 64
+                / 96 / 128 共 8 档）与"仅 WiFi 下载"开关，设置即时生效。开启"仅 WiFi"后，非 WiFi
+                网络下不会消耗移动数据；WiFi 断开自动暂停下载，恢复后自动继续。下载确认弹窗中也可单独勾选"仅
+                WiFi"。
+            </p>
+            <img src="imgs/image27.jpg" alt="下载设置弹窗" class="doc-img">
+            <p class="doc-img-caption">图21：下载设置弹窗（线程数选择 + 仅 WiFi 开关）</p>
+
+            <h2 style="font-size:20px;font-weight:600;margin:32px 0 12px;">6.4 下载管理</h2>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:12px;">
+                "下载"入口进入下载管理面板，分为"下载中"与"已下载"两个标签页。
+            </p>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
+                <strong>下载中：</strong>显示任务进度、下载速度、预计剩余时间，支持暂停 / 恢复、置顶 /
+                排序、删除。
+            </p>
+            <img src="imgs/image28.jpg" alt="下载中列表" class="doc-img">
+            <p class="doc-img-caption">图22：下载中列表（含进度条、速度、暂停 / 恢复按钮）</p>
+        </section>
+
+        <!-- ======== 七、已下载视频管理 ======== -->
+        <section class="content-section" id="ch7">
+            <div class="section-badge">07</div>
+            <h1 class="content-title">七、已下载视频管理</h1>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:12px;">
+                "已下载"标签页按文件夹分组展示已完成的视频，支持：
+            </p>
+            <ul class="doc-list">
+                <li><strong>缩略图：</strong>自动生成视频封面</li>
+                <li><strong>排序：</strong>按名称自然排序 / 时间排序</li>
+                <li><strong>播放：</strong>点击直接进入播放器</li>
+                <li><strong>批量操作：</strong>多选后批量删除、批量改文件夹</li>
+                <li><strong>重命名 / 改扩展名 / 修改文件夹 / 复制链接</strong></li>
+                <li><strong>边下边播：</strong>已完成任务可继续进入播放器</li>
+            </ul>
+            <img src="imgs/image29.jpg" alt="已下载列表" class="doc-img">
+            <p class="doc-img-caption">图23：已下载列表（文件夹分组 + 缩略图）</p>
+            <img src="imgs/image30.jpg" alt="已下载多选批量操作" class="doc-img">
+            <p class="doc-img-caption">图24：已下载多选批量操作界面</p>
+        </section>
+
+        <!-- ======== 八、书签与浏览历史 ======== -->
+        <section class="content-section" id="ch8">
+            <div class="section-badge">08</div>
+            <h1 class="content-title">八、书签与浏览历史</h1>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:12px;">
+                "书签"入口打开书签与历史合并面板，包含"书签"与"历史"两个标签页。
+            </p>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:12px;">
+                <strong>书签：</strong>支持添加当前页为书签、查看书签列表、点击在新标签页打开、复制链接、删除；浏览时可一键为当前页面添加书签。
+            </p>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:12px;">
+                <strong>历史：</strong>自动记录浏览记录，双列网格展示标题、网址与相对时间，支持单条删除与清空全部。
+            </p>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
+                此外，搜索历史自动保存，可一键清除。隐身模式下的书签与历史与主空间完全隔离。
+            </p>
+            <img src="imgs/image31.jpg" alt="书签与历史合并面板" class="doc-img">
+            <p class="doc-img-caption">图25：书签与历史合并面板（书签标签页）</p>
+            <img src="imgs/image32.jpg" alt="历史记录标签页" class="doc-img">
+            <p class="doc-img-caption">图26：历史记录标签页（双列网格 + 清除按钮）</p>
+        </section>
+
+        <!-- ======== 九、在线影院 ======== -->
+        <section class="content-section" id="ch9">
+            <div class="section-badge">09</div>
+            <h1 class="content-title">九、在线影院</h1>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
+                点击首页"在线影院"卡片进入聚合在线视频资源页面，展示可观看的视频列表；点击视频可进入播放器直接播放。
+            </p>
+            <img src="imgs/image33.jpg" alt="在线影院页面" class="doc-img">
+            <p class="doc-img-caption">图27：在线影院页面（视频列表）</p>
+        </section>
+
+        <!-- ======== 十、WiFi 文件快传 ======== -->
+        <section class="content-section" id="ch10">
+            <div class="section-badge">10</div>
+            <h1 class="content-title">十、WiFi 文件快传</h1>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:12px;">
+                点击首页"文件快传"卡片进入文件传输面板，实现同一局域网内手机与电脑之间的文件互传，无需数据线：
+            </p>
+            <ol class="doc-list" style="list-style-type:decimal;">
+                <li>确认手机与电脑连接同一 WiFi</li>
+                <li>在面板中点击"选择目录"指定共享文件夹</li>
+                <li>启动服务后复制显示的访问地址</li>
+                <li>在电脑浏览器中打开地址，即可浏览、上传、下载文件</li>
+            </ol>
+            <img src="imgs/image34.jpg" alt="文件快传面板" class="doc-img">
+            <p class="doc-img-caption">图28：文件快传面板（WiFi 状态、目录选择、访问地址与复制）</p>
+        </section>
+
+        <!-- ======== 十一、意见反馈 ======== -->
+        <section class="content-section" id="ch11">
+            <div class="section-badge">11</div>
+            <h1 class="content-title">十一、意见反馈</h1>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
+                "设置 → 意见反馈"进入反馈提交页面，填写分类、标题、问题描述并上传截图后提交；"设置 →
+                我的反馈"可查看全部工单记录，工单以对话形式管理，可随时查看回复并继续交流，支持关闭 /
+                重新开启工单。
+            </p>
+            <img src="imgs/image35.jpg" alt="意见反馈提交表单" class="doc-img">
+            <p class="doc-img-caption">图29：意见反馈提交表单（分类、标题、描述、上传图片）</p>
+            <div class="doc-img-group">
+                <img src="imgs/image36.jpg" alt="我的反馈工单列表" class="doc-img">
+                <img src="imgs/image37.jpg" alt="工单详情" class="doc-img">
+            </div>
+            <p class="doc-img-caption">图30：我的反馈工单列表</p>
+        </section>
+
+        <!-- ======== 十二、系统设置 ======== -->
+        <section class="content-section" id="ch12">
+            <div class="section-badge">12</div>
+            <h1 class="content-title">十二、系统设置</h1>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
+                首页"设置"按钮或"更多 → 设置"打开设置面板，主要设置项如下：
+            </p>
+            <table class="doc-table">
+                <thead>
+                <tr>
+                    <th>设置项</th>
+                    <th>说明</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>启动页设置</td>
+                    <td>设置应用启动时打开的页面（可选恢复上次浏览，可恢复默认）</td>
+                </tr>
+                <tr>
+                    <td>切换 UA</td>
+                    <td>切换浏览器标识（如桌面版 User-Agent），适配部分网页</td>
+                </tr>
+                <tr>
+                    <td>加载超时时间</td>
+                    <td>设置网页加载超时时长</td>
+                </tr>
+                <tr>
+                    <td>恢复上次会话</td>
+                    <td>开启后重启应用自动恢复上次打开的标签页</td>
+                </tr>
+                <tr>
+                    <td>强制页面缩放</td>
+                    <td>允许在网页中通过手势缩放页面</td>
+                </tr>
+                <tr>
+                    <td>预加载模式</td>
+                    <td>骨架屏、DNS 预解析等网页加载优化</td>
+                </tr>
+                <tr>
+                    <td>广告拦截</td>
+                    <td>开启 / 关闭网页广告拦截功能</td>
+                </tr>
+                <tr>
+                    <td>隐身模式</td>
+                    <td>进入 / 退出隐身模式</td>
+                </tr>
+                <tr>
+                    <td>清除缓存</td>
+                    <td>清理应用缓存数据</td>
+                </tr>
+                <tr>
+                    <td>清空历史记录</td>
+                    <td>删除全部浏览历史（不可恢复）</td>
+                </tr>
+                <tr>
+                    <td>图标库</td>
+                    <td>浏览内置图标</td>
+                </tr>
+                <tr>
+                    <td>意见反馈</td>
+                    <td>进入意见反馈提交页</td>
+                </tr>
+                <tr>
+                    <td>我的反馈</td>
+                    <td>查看已提交的反馈工单</td>
+                </tr>
+                <tr>
+                    <td>关于</td>
+                    <td>查看软件版本与相关信息</td>
+                </tr>
+                <tr>
+                    <td>恢复默认设置</td>
+                    <td>将所有设置重置为出厂默认值</td>
+                </tr>
+                </tbody>
+            </table>
+            <img src="imgs/image38.jpg" alt="设置面板整体界面" class="doc-img">
+            <p class="doc-img-caption">图31：设置面板整体界面</p>
+
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin:20px 0 16px;">
+                主题切换入口位于首页主题按钮及"更多"菜单 → 主题切换，支持浅色 / 深色 / 跟随系统三种模式。
+            </p>
+            <img src="imgs/image39.jpg" alt="主题选择弹窗" class="doc-img">
+            <p class="doc-img-caption">图32：主题选择弹窗（浅色 / 深色 / 跟随系统）</p>
+        </section>
+
+        <!-- ======== 十三、常见问题 ======== -->
+        <section class="content-section" id="ch13">
+            <div class="section-badge">13</div>
+            <h1 class="content-title">十三、常见问题</h1>
+            <div class="faq-list">
+                <div class="faq-item active">
+                    <button class="faq-trigger">
+                        <span class="faq-question">Q：下载速度慢怎么办？</span>
+                        <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                             stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            在下载设置中提高下载线程数可显著提升速度；软件也会根据网络情况自适应调整并发并记录最佳线程数。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-trigger">
+                        <span class="faq-question">Q：智能广告过滤会影响正常播放吗？</span>
+                        <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                             stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            智能过滤主要针对推广内容片段，正常情况下不影响正片播放。如出现误过滤，可在设置中关闭或通过"意见反馈"告知我们。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-trigger">
+                        <span class="faq-question">Q：投屏功能如何使用？</span>
+                        <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                             stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            手机与电脑需在同一局域网，在播放器中点击投屏按钮，再在电脑浏览器打开提示地址即可。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-trigger">
+                        <span class="faq-question">Q：下载的视频保存在哪里？</span>
+                        <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                             stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>视频保存在应用私有存储目录，可在"下载管理 → 已下载"中查看、播放与操作。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-trigger">
+                        <span class="faq-question">Q：如何边下载边播放？</span>
+                        <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                             stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>在"下载管理 → 下载中"点击正在下载的任务，选择"边下边播"即可。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-trigger">
+                        <span class="faq-question">Q：隐身模式和普通浏览有什么区别？</span>
+                        <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                             stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            隐身模式使用独立数据空间，书签、历史、下载等与主空间隔离，退出后自动恢复主空间数据。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======== 十四、技术支持 ======== -->
+        <section class="content-section" id="ch14">
+            <div class="section-badge">14</div>
+            <h1 class="content-title">十四、技术支持</h1>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:12px;">
+                本软件著作权归ZiroXin所有。
+            </p>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:12px;">
+                用户在软件使用过程中，如遇到软件相关问题，可通过软件内意见反馈模块提交问题。
+            </p>
+        </section>
+
+        <!-- Back to Home -->
+        <div class="content-footer">
+            <a href="index.html" class="btn btn--primary">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                     width="18" height="18">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                返回首页
+            </a>
+            <a href="index.html#download" class="btn btn--secondary">下载应用</a>
+        </div>
+    </main>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="有风无界" class="footer-logo-img">
+                    <span>有风无界</span>
+                </div>
+                <p class="footer-copyright">© 2026 Ziro Xin. All rights reserved.</p>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">首页</a>
+                <a href="index.html#features">功能</a>
+                <a href="index.html#changelog">更新日志</a>
+                <a href="index.html#download">下载</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop" aria-label="回到顶部">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20"
+         height="20">
+        <path d="M18 15l-6-6-6 6"/>
+    </svg>
+</button>
+
+<script src="guide-script.js"></script>
 </body>
 </html>

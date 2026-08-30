@@ -226,12 +226,14 @@ button {
 }
 
 .sidebar-submenu {
-    display: none;
-    padding: 4px 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding: 0;
 }
 
 .sidebar-submenu.active {
-    display: block;
+    max-height: 500px;
 }
 
 .sidebar-link--sub {
@@ -242,6 +244,10 @@ button {
 
 .sidebar-link--sub.active {
     background: rgba(0, 113, 227, 0.08);
+}
+
+.sidebar-item {
+    position: relative;
 }
 
 /* Sidebar Toggle (Mobile) */

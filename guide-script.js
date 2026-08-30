@@ -6,8 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sidebar = document.getElementById('sidebar');
     const sidebarToggle = document.getElementById('sidebarToggle');
     const sidebarLinks = document.querySelectorAll('.sidebar-link');
-    const submenuTriggers = document.querySelectorAll('.sidebar-link[data-section="features"]');
-    const submenu = document.querySelector('.sidebar-submenu');
+    const sidebarItems = document.querySelectorAll('.sidebar-item');
     const sections = document.querySelectorAll('.content-section');
 
     // Mobile sidebar toggle
@@ -27,22 +26,107 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Submenu toggle
-    submenuTriggers.forEach(trigger => {
-        trigger.addEventListener('click', (e) => {
-            e.preventDefault();
-            trigger.classList.toggle('expanded');
-            submenu.classList.toggle('active');
-        });
+    // Submenu toggle - click primary link to expand/collapse submenu
+    sidebarItems.forEach(item => {
+        const primaryLink = item.querySelector('.sidebar-link');
+        const submenu = item.querySelector('.sidebar-submenu');
+        
+        if (submenu) {
+            // Track expanded state per item to avoid observer re-expansion
+            item._userExpanded = false;
+            
+            primaryLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const wasExpanded = item._userExpanded;
+                
+                // Collapse all other submenus
+                sidebarItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem._userExpanded) {
+                        otherItem._userExpanded = false;
+                        otherItem.classList.remove('expanded');
+                        const otherLink = otherItem.querySelector('.sidebar-link');
+                        if (otherLink) otherLink.classList.remove('expanded');
+                        const otherSubmenu = otherItem.querySelector('.sidebar-submenu');
+                        if (otherSubmenu) otherSubmenu.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current submenu
+                if (wasExpanded) {
+                    item._userExpanded = false;
+                    item.classList.remove('expanded');
+                    primaryLink.classList.remove('expanded');
+                    submenu.classList.remove('active');
+                } else {
+                    item._userExpanded = true;
+                    item.classList.add('expanded');
+                    primaryLink.classList.add('expanded');
+                    submenu.classList.add('active');
+                    // Activate the primary link
+                    sidebarLinks.forEach(l => l.classList.remove('active'));
+                    primaryLink.classList.add('active');
+                }
+            });
+        }
     });
 
     // Sidebar link click
     sidebarLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-            // Don't prevent default for submenu items
-            if (!link.classList.contains('sidebar-link--sub')) {
+            // For submenu links: expand parent and scroll (stopPropagation prevents this handler from running via bubbling)
+            if (link.classList.contains('sidebar-link--sub')) {
                 e.preventDefault();
+                
+                // Expand parent submenu
+                const parentItem = link.closest('.sidebar-item');
+                if (parentItem && !parentItem._userExpanded) {
+                    // Collapse all others first
+                    sidebarItems.forEach(otherItem => {
+                        if (otherItem !== parentItem && otherItem._userExpanded) {
+                            otherItem._userExpanded = false;
+                            otherItem.classList.remove('expanded');
+                            const otherLink = otherItem.querySelector('.sidebar-link');
+                            if (otherLink) otherLink.classList.remove('expanded');
+                            const otherSubmenu = otherItem.querySelector('.sidebar-submenu');
+                            if (otherSubmenu) otherSubmenu.classList.remove('active');
+                        }
+                    });
+                    parentItem._userExpanded = true;
+                    parentItem.classList.add('expanded');
+                    const parentLink = parentItem.querySelector('.sidebar-link');
+                    if (parentLink) parentLink.classList.add('expanded');
+                    const submenu = parentItem.querySelector('.sidebar-submenu');
+                    if (submenu) submenu.classList.add('active');
+                }
+                
+                // Update active state
+                sidebarLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                if (parentItem) {
+                    const parentLink = parentItem.querySelector('.sidebar-link');
+                    if (parentLink) parentLink.classList.add('active');
+                }
+                
+                // Scroll to section using href hash
+                const href = link.getAttribute('href');
+                const targetSection = href ? document.querySelector(href) : null;
+                if (targetSection) {
+                    const headerOffset = 80;
+                    const elementPosition = targetSection.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                }
+                
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.remove('active');
+                }
+                return;
             }
+            
+            // Primary link: prevent hash navigation (scroll handled manually)
+            e.preventDefault();
             
             const sectionId = link.getAttribute('data-section');
             const targetSection = document.getElementById(sectionId);
@@ -51,11 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Update active state
                 sidebarLinks.forEach(l => l.classList.remove('active'));
                 link.classList.add('active');
-                
-                // If it's a feature sub-link, also activate parent
-                if (link.classList.contains('sidebar-link--sub')) {
-                    submenuTriggers.forEach(t => t.classList.add('active'));
-                }
                 
                 // Scroll to section
                 const headerOffset = 80;
@@ -90,17 +169,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Update sidebar active state
                 sidebarLinks.forEach(link => {
                     link.classList.remove('active');
-                    if (link.getAttribute('data-section') === sectionId) {
+                    
+                    // Match by data-section (primary links) or href hash (sub-links)
+                    const linkHref = link.getAttribute('href');
+                    const matchSection = link.getAttribute('data-section') === sectionId;
+                    const matchSub = linkHref && linkHref.substring(1) === sectionId;
+                    
+                    if (matchSection || matchSub) {
                         link.classList.add('active');
                         
-                        // If it's a sub-link, also activate parent and expand submenu
+                        // If it's a sub-link, also activate parent (but do NOT expand submenu)
                         if (link.classList.contains('sidebar-link--sub')) {
-                            const parentTrigger = document.querySelector('.sidebar-link[data-section="features"]');
-                            if (parentTrigger) {
-                                parentTrigger.classList.add('active', 'expanded');
-                            }
-                            if (submenu) {
-                                submenu.classList.add('active');
+                            const parentItem = link.closest('.sidebar-item');
+                            if (parentItem) {
+                                const parentLink = parentItem.querySelector('.sidebar-link');
+                                if (parentLink) {
+                                    parentLink.classList.add('active');
+                                }
                             }
                         }
                     }
@@ -109,11 +194,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    // Observe all sections
+    // Observe all sections and h2 sub-sections
     sections.forEach(section => {
         if (section.id) {
             observer.observe(section);
         }
+    });
+    document.querySelectorAll('h2[id]').forEach(h2 => {
+        observer.observe(h2);
     });
 
     // FAQ accordion

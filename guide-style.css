@@ -646,6 +646,7 @@ button {
 
 .faq-item.active .faq-answer {
     max-height: 300px;
+    padding-bottom: 10px;
 }
 
 .faq-answer ul {

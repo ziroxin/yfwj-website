@@ -161,9 +161,25 @@
                 </a>
             </div>
             <div class="sidebar-item">
-                <a href="#ch8" class="sidebar-link" data-section="ch8" style="color:orangered;">
+                <a href="#ch8" class="sidebar-link" data-section="ch8">
                     <span class="sidebar-icon">🎬</span>八、&nbsp;&nbsp;&nbsp;&nbsp;剧助手
+                    <svg class="sidebar-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                         stroke-width="2">
+                        <polyline points="9 6 15 12 9 18"/>
+                    </svg>
                 </a>
+                <div class="sidebar-submenu">
+                    <a href="#ch8-1" class="sidebar-link sidebar-link--sub" data-sub="8.1">8.1
+                        打开剧助手</a>
+                    <a href="#ch8-2" class="sidebar-link sidebar-link--sub" data-sub="8.2">8.2
+                        选择剧集区域</a>
+                    <a href="#ch8-3" class="sidebar-link sidebar-link--sub" data-sub="8.3">8.3
+                        剧名 & 选集</a>
+                    <a href="#ch8-4" class="sidebar-link sidebar-link--sub" data-sub="8.4">8.4
+                        解析下载链接</a>
+                    <a href="#ch8-5" class="sidebar-link sidebar-link--sub" data-sub="8.5">8.5
+                        下载 & 分组</a>
+                </div>
             </div>
             <div class="sidebar-item">
                 <a href="#ch9" class="sidebar-link" data-section="ch9">
@@ -182,7 +198,7 @@
             </div>
             <div class="sidebar-item">
                 <a href="#ch12" class="sidebar-link" data-section="ch12">
-                    <span class="sidebar-icon">⚙️</span>十二、设置
+                    <span class="sidebar-icon">⚙️</span>十二、更多设置
                 </a>
             </div>
             <div class="sidebar-item">
@@ -691,35 +707,104 @@
             <div class="section-badge">08</div>
             <h1 class="content-title">八、剧助手</h1>
             <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
-                <strong>UI</strong>
+                追美剧、追韩剧、追日剧、追泰剧，是不是烦透了一集一集的下载！<br/>
+                救星来了！！一键采集剧集，自动分析视频链接，一键创建下载任务，爽到飞起~
+            </p>
+
+            <h2 id="ch8-1" style="font-size:20px;font-weight:600;margin:32px 0 12px;">8.1
+                打开剧助手</h2>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
+                在浏览器中打开包含剧集的网页，点击底部工具栏的"更多"按钮，在弹出的菜单中选择"剧助手"进入功能。
+            </p>
+            <img src="imgs/image-jzs1.jpg" alt="剧助手入口" class="doc-img">
+            <p class="doc-img-caption">图26：浏览器底部工具栏 > 更多 > 剧助手</p>
+
+            <h2 id="ch8-2" style="font-size:20px;font-weight:600;margin:32px 0 12px;">8.2
+                选择剧集区域</h2>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
+                进入剧助手后，系统会自动进入“选择区域”模式。
+            </p>
+            <ul class="doc-list">
+                <li><strong>选择元素：</strong>点选“任意一集”自动识别剧集列表所在区域，被选中的区域会显示红色边框，高亮显示
+                </li>
+                <li><strong>扩大范围：</strong>如果没选中全部剧集，点击"↑ 父级"按钮，可以扩选</li>
+                <li><strong>确认选择：</strong>确认选区正确后，点击"确认选择"按钮</li>
+                <li><strong>取消：</strong>点击"取消"按钮，退出剧助手</li>
+            </ul>
+            <img src="imgs/image-jzs2.jpg" alt="选择剧集区域" class="doc-img">
+            <p class="doc-img-caption">图27：选择剧集区域</p>
+
+            <h2 id="ch8-3" style="font-size:20px;font-weight:600;margin:32px 0 12px;">8.3
+                剧名 & 选集</h2>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
+                确认选择后，自动抓取剧集名称等信息，并弹出“抓取剧集”弹窗，支持以下操作：
+            </p>
+            <ul class="doc-list">
+                <li><strong>剧名：</strong>可修改剧集名称，作为下载后的文件名和分组名</li>
+                <li><strong>全选/取消全选/反选：</strong>可任意选择要下载的集数，支持全选、反选等</li>
+                <li><strong>确定下载：</strong>点击"确定下载"按钮，开始解析选中的剧集</li>
+            </ul>
+            <img src="imgs/image-jzs3.jpg" alt="剧名&选集" class="doc-img">
+            <p class="doc-img-caption">图29：剧名 & 选集</p>
+
+            <h2 id="ch8-4" style="font-size:20px;font-weight:600;margin:32px 0 12px;">8.4
+                解析下载链接</h2>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
+                确定剧名和选集后，进入解析界面，会对选中的每一集进行只能解析。解析过程会显示进度信息：
+            </p>
+            <ul class="doc-list">
+                <li><strong>解析进度：</strong>显示当前解析进度，包括成功和失败数量等</li>
+                <li><strong>解析状态：</strong>每个剧集显示解析状态（✓ 成功、✗ 失败、⟳ 解析中）</li>
+                <li><strong>取消解析：</strong>点击"取消"按钮会弹出退出确认，确认后退出剧助手</li>
+                <li><strong>最小化/恢复：</strong>点击外部遮罩区域或按返回键，会最小化窗口；左下角自动出现泡泡条，点击可恢复窗口
+                </li>
+            </ul>
+            <p style="font-size:14px;color:orangered;line-height:1.8;margin-bottom:16px;">
+                注意：解析过程中，不要推出APP，否则可能导致解析内容丢失
             </p>
             <div class="doc-img-group">
-                <img src="imgs/image-jzs1.jpg" alt="剧助手-1" class="doc-img">
-
+                <img src="imgs/image-jzs4.jpg" alt="正在解析剧集" class="doc-img">
+                <img src="imgs/image-jzs5.jpg" alt="最小化泡泡条" class="doc-img">
             </div>
-            <p class="doc-img-caption">图23：剧助手页面（剧集列表）</p>
+            <p class="doc-img-caption">图30：正在解析剧集 &nbsp;&nbsp;&nbsp;&nbsp;
+                图31：最小化泡泡条</p>
+
+            <h2 id="ch8-5" style="font-size:20px;font-weight:600;margin:32px 0 12px;">8.5
+                下载 & 分组</h2>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
+                全部解析完成后，自动创建下载任务。弹出下载弹窗，可以看到下载进度等。
+            </p>
+            <ul class="doc-list">
+                <li><strong>批量下载：</strong>自动创建下载任务，并自动打开下载弹窗，可查看下载进度
+                </li>
+                <li><strong>自动分组：</strong>下载完成后，自动根据剧名分组（文件夹），方便播放</li>
+            </ul>
+            <div class="doc-img-group">
+                <img src="imgs/image-jzs6.jpg" alt="解析自动创建下载任务进度" class="doc-img">
+                <img src="imgs/image-jzs7.jpg" alt="自动按剧名分组" class="doc-img">
+            </div>
+            <p class="doc-img-caption">图30：自动创建下载任务 &nbsp;&nbsp;&nbsp;&nbsp;
+                图31：自动按剧名分组</p>
         </section>
 
         <!-- ======== 九、书签与浏览历史 ======== -->
         <section class="content-section" id="ch9">
             <div class="section-badge">09</div>
-            <h1 class="content-title">九、书签与浏览历史</h1>
+            <h1 class="content-title">九、书签 & 历史</h1>
             <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:12px;">
-                "书签"入口打开书签与历史合并面板，包含"书签"与"历史"两个标签页。
-            </p>
-            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:12px;">
-                <strong>书签：</strong>支持添加当前页为书签、查看书签列表、点击在新标签页打开、复制链接、删除；浏览时可一键为当前页面添加书签。
+                "书签"和"历史"在同一弹窗内的两个标签页。
             </p>
             <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:12px;">
-                <strong>历史：</strong>自动记录浏览记录，双列网格展示标题、网址与相对时间，支持单条删除与清空全部。
+                <strong>书签：</strong>添加书签、书签列表、搜索书签、复制分享、删除</p>
+            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:12px;">
+                <strong>历史：</strong>自动记录浏览器访问历史，双列网格展示标题、网址、时间等；可搜索历史；可单条删除；可清空全部；无痕模式不会记录
             </p>
-            <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
-                此外，搜索历史自动保存，可一键清除。隐身模式下的书签与历史与主空间完全隔离。
-            </p>
-            <img src="imgs/image31.jpg" alt="书签与历史合并面板" class="doc-img">
-            <p class="doc-img-caption">图26：书签与历史合并面板（书签标签页）</p>
-            <img src="imgs/image32.jpg" alt="历史记录标签页" class="doc-img">
-            <p class="doc-img-caption">图27：历史记录标签页（双列网格 + 清除按钮）</p>
+            <div class="doc-img-group">
+                <img src="imgs/image31.jpg" alt="书签与历史合并面板" class="doc-img">
+                <img src="imgs/image32.jpg" alt="历史记录标签页" class="doc-img">
+            </div>
+            <p class="doc-img-caption">图33： 书 签 页 &nbsp;&nbsp;&nbsp;&nbsp;
+                图34：历史记录</p>
         </section>
 
         <!-- ======== 十、WiFi 文件快传 ======== -->
@@ -727,16 +812,22 @@
             <div class="section-badge">10</div>
             <h1 class="content-title">十、WiFi 文件快传</h1>
             <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:12px;">
-                点击首页"文件快传"卡片进入文件传输面板，实现同一局域网内手机与电脑之间的文件互传，无需数据线：
+                点击首页"WiFi 文件快传"，打开文件互传功能！局域网内【手机与电脑】文件互传，无需数据线，速度比U盘还快：
             </p>
             <ol class="doc-list" style="list-style-type:decimal;">
-                <li>确认手机与电脑连接同一 WiFi</li>
-                <li>在面板中点击"选择目录"指定共享文件夹</li>
-                <li>启动服务后复制显示的访问地址</li>
-                <li>在电脑浏览器中打开地址，即可浏览、上传、下载文件</li>
+                <li>确认【手机与电脑】连接的是同一 WiFi</li>
+                <li>
+                    首次打开，点击"选择目录"，指定【手机上】要共享的文件夹（建议创建一个新文件夹，更安全）
+                </li>
+                <li>启动服务！</li>
+                <li>在电脑（或其他设备）浏览器打开地址，即可浏览、上传、下载文件</li>
             </ol>
-            <img src="imgs/image34.jpg" alt="文件快传面板" class="doc-img">
-            <p class="doc-img-caption">图28：文件快传面板（WiFi 状态、目录选择、访问地址与复制）</p>
+            <div class="doc-img-group">
+                <img src="imgs/image34.jpg" alt="文件快传面板" class="doc-img">
+                <img src="imgs/image40.jpg" alt="电脑端访问界面" class="doc-img">
+            </div>
+            <p class="doc-img-caption">图35：文件快传面板 &nbsp;&nbsp;&nbsp;&nbsp;
+                图40：电脑访问界面</p>
         </section>
 
         <!-- ======== 十一、意见反馈 ======== -->
@@ -744,25 +835,28 @@
             <div class="section-badge">11</div>
             <h1 class="content-title">十一、意见反馈</h1>
             <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
-                "设置 → 意见反馈"进入反馈提交页面，填写分类、标题、问题描述并上传截图后提交；"设置 →
-                我的反馈"可查看全部工单记录，工单以对话形式管理，可随时查看回复并继续交流，支持关闭 /
-                重新开启工单。
+                “更多设置 → 意见反馈”提交反馈<br/>
+                “更多设置 → 我的反馈”查看已提交工单<br/>
+                点击工单查看详情及进度等，可随时查看回复或关闭工单
             </p>
-            <img src="imgs/image35.jpg" alt="意见反馈提交表单" class="doc-img">
-            <p class="doc-img-caption">图29：意见反馈提交表单（分类、标题、描述、上传图片）</p>
             <div class="doc-img-group">
+                <img src="imgs/image35.jpg" alt="意见反馈提交表单" class="doc-img">
                 <img src="imgs/image36.jpg" alt="我的反馈工单列表" class="doc-img">
                 <img src="imgs/image37.jpg" alt="工单详情" class="doc-img">
             </div>
-            <p class="doc-img-caption">图30：我的反馈工单列表</p>
+            <p class="doc-img-caption" style="display:flex;justify-content:space-around;">
+                <span>图36：意见反馈提交</span>
+                <span>图37：我的反馈工单列表</span>
+                <span>图38：工单详情</span>
+            </p>
         </section>
 
-        <!-- ======== 十二、系统设置 ======== -->
+        <!-- ======== 十二、更多设置 ======== -->
         <section class="content-section" id="ch12">
             <div class="section-badge">12</div>
-            <h1 class="content-title">十二、系统设置</h1>
+            <h1 class="content-title">十二、更多设置</h1>
             <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:16px;">
-                首页"设置"按钮或"更多 → 设置"打开设置面板，主要设置项如下：
+                首页"设置"按钮 或 "更多 → 设置"打开设置面板，主要设置项如下：
             </p>
             <table class="doc-table">
                 <thead>
@@ -773,36 +867,37 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td>启动页设置</td>
-                    <td>设置应用启动时打开的页面（可选恢复上次浏览，可恢复默认）</td>
+                    <td>默认起始页</td>
+                    <td>打开浏览器/新建标签时，打开的初始页（默认：空白标签页）</td>
                 </tr>
                 <tr>
-                    <td>切换 UA</td>
-                    <td>切换浏览器标识（如桌面版 User-Agent），适配部分网页</td>
+                    <td>启动设置</td>
+                    <td>开启后，APP启动时自动打开上次关闭时正在浏览的网页（默认：APP启动时打开首页）
+                    </td>
+                </tr>
+                <tr>
+                    <td>UA标识</td>
+                    <td>切换浏览器UA标识（Android/PC/iPhone/iPad）适配网页（默认:Android）</td>
+                </tr>
+                <tr>
+                    <td>强制页面缩放</td>
+                    <td>允许在网页中通过手势强制缩放页面</td>
+                </tr>
+                <tr>
+                    <td>智能预加载网页</td>
+                    <td>Webview自带功能，根据用户习惯智能预加载网页，优化使用体验</td>
                 </tr>
                 <tr>
                     <td>加载超时时间</td>
                     <td>设置网页加载超时时长</td>
                 </tr>
                 <tr>
-                    <td>恢复上次会话</td>
-                    <td>开启后重启应用自动恢复上次打开的标签页</td>
-                </tr>
-                <tr>
-                    <td>强制页面缩放</td>
-                    <td>允许在网页中通过手势缩放页面</td>
-                </tr>
-                <tr>
-                    <td>预加载模式</td>
-                    <td>骨架屏、DNS 预解析等网页加载优化</td>
+                    <td>隐身模式</td>
+                    <td>进入 / 退出隐身模式</td>
                 </tr>
                 <tr>
                     <td>广告拦截</td>
                     <td>开启 / 关闭网页广告拦截功能</td>
-                </tr>
-                <tr>
-                    <td>隐身模式</td>
-                    <td>进入 / 退出隐身模式</td>
                 </tr>
                 <tr>
                     <td>清除缓存</td>
@@ -813,10 +908,6 @@
                     <td>删除全部浏览历史（不可恢复）</td>
                 </tr>
                 <tr>
-                    <td>图标库</td>
-                    <td>浏览内置图标</td>
-                </tr>
-                <tr>
                     <td>意见反馈</td>
                     <td>进入意见反馈提交页</td>
                 </tr>
@@ -825,23 +916,27 @@
                     <td>查看已提交的反馈工单</td>
                 </tr>
                 <tr>
-                    <td>关于</td>
+                    <td>关于我</td>
                     <td>查看软件版本与相关信息</td>
                 </tr>
                 <tr>
+                    <td>检查更新</td>
+                    <td>查看APP当前版本；检查是否有新版本；开启 / 关闭自动检测更新</td>
+                </tr>
+                <tr>
                     <td>恢复默认设置</td>
-                    <td>将所有设置重置为出厂默认值</td>
+                    <td>将本APP所有设置重置为默认值</td>
                 </tr>
                 </tbody>
             </table>
             <img src="imgs/image38.jpg" alt="设置面板整体界面" class="doc-img">
-            <p class="doc-img-caption">图31：设置面板整体界面</p>
+            <p class="doc-img-caption">图38：更多设置</p>
 
             <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin:20px 0 16px;">
-                主题切换入口位于首页主题按钮及"更多"菜单 → 主题切换，支持浅色 / 深色 / 跟随系统三种模式。
+                <strong>主题切换：</strong>首页主题按钮、"更多" → 主题切换；支持浅色 / 深色 / 跟随系统三种模式。
             </p>
             <img src="imgs/image39.jpg" alt="主题选择弹窗" class="doc-img">
-            <p class="doc-img-caption">图32：主题选择弹窗（浅色 / 深色 / 跟随系统）</p>
+            <p class="doc-img-caption">图39：主题切换</p>
         </section>
 
         <!-- ======== 十三、常见问题 ======== -->
@@ -858,8 +953,8 @@
                         </svg>
                     </button>
                     <div class="faq-answer">
-                        <p>
-                            在下载设置中提高下载线程数可显著提升速度；软件也会根据网络情况自适应调整并发并记录最佳线程数。</p>
+                        <p>在下载中 >
+                            设置面板，可修改下载线程数，可显著提升速度；APP也会根据网络情况，智能优化最佳线程数！</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -872,7 +967,9 @@
                     </button>
                     <div class="faq-answer">
                         <p>
-                            智能过滤主要针对推广内容片段，正常情况下不影响正片播放。如出现误过滤，可在设置中关闭或通过"意见反馈"告知我们。</p>
+                            智能过滤主要针对推广内容片段，正常情况下不影响正片播放。如出现误过滤，可在设置中关闭或通过"意见反馈"告知我们。<br/>
+                            智能过滤的算法，作者会根据反馈情况持续更新！！！所以您的反馈，可以会帮助更多人享受无广自由~
+                        </p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -885,7 +982,7 @@
                     </button>
                     <div class="faq-answer">
                         <p>
-                            手机与电脑需在同一局域网，在播放器中点击投屏按钮，再在电脑浏览器打开提示地址即可。</p>
+                            电视可以安装配套PC投屏软件，一键投屏，自动开始播放；PC端可以打开浏览器，手动输入投屏地址，直接播放</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -897,7 +994,7 @@
                         </svg>
                     </button>
                     <div class="faq-answer">
-                        <p>视频保存在应用私有存储目录，可在"下载管理 → 已下载"中查看、播放与操作。</p>
+                        <p>视频保存在APP私有存储目录，可在"我的下载 → 已下载"中查看、播放与操作。</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -909,7 +1006,7 @@
                         </svg>
                     </button>
                     <div class="faq-answer">
-                        <p>在"下载管理 → 下载中"点击正在下载的任务，选择"边下边播"即可。</p>
+                        <p>在"下载 → 下载中"点击正在下载的任务更多菜单，点击"边下边播"即可。</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -922,21 +1019,23 @@
                     </button>
                     <div class="faq-answer">
                         <p>
-                            隐身模式使用独立数据空间，书签、历史、下载等与主空间隔离，退出后自动恢复主空间数据。</p>
+                            普通浏览供您日常使用！<br/>
+                            若遇到女朋友突击检查浏览器记录！一键开启隐身模式，自动隐藏所有使用痕迹（书签、历史、下载等全隐藏）用完一键恢复
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ======== 十四、技术支持 ======== -->
+        <!-- ======== 十四、关于 ======== -->
         <section class="content-section" id="ch14">
             <div class="section-badge">14</div>
-            <h1 class="content-title">十四、技术支持</h1>
+            <h1 class="content-title">十四、关于</h1>
             <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:12px;">
-                本软件著作权归ZiroXin所有。
+                本软件著作权归 ZiroXin 所有。
             </p>
             <p style="font-size:14px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:12px;">
-                用户在软件使用过程中，如遇到软件相关问题，可通过软件内意见反馈模块提交问题。
+                用户在软件使用过程中，如遇到软件相关问题，可通过APP内“意见反馈”模块提交工单，作者看到后及时回复。
             </p>
         </section>
 
@@ -949,7 +1048,8 @@
                 </svg>
                 返回首页
             </a>
-            <a href="index.html#download" class="btn btn--secondary">下载应用</a>
+            <a href="index.html#download" class="btn btn--secondary">
+                下载应用</a>
         </div>
     </main>
 </div>
@@ -965,9 +1065,9 @@
                 </div>
                 <p class="footer-copyright">© 2026 Ziro Xin. All rights reserved.</p>
             </div>
-            <div class="footer-links">
+            <div class="footer-links" style="margin-right:40px;">
                 <a href="index.html">首页</a>
-                <a href="index.html#features">功能</a>
+                <a href="index.html#features">核心功能</a>
                 <a href="index.html#changelog">更新日志</a>
                 <a href="index.html#download">下载</a>
             </div>

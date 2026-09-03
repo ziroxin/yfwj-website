@@ -13,7 +13,27 @@ document.addEventListener('DOMContentLoaded', () => {
     if (sidebarToggle) {
         sidebarToggle.addEventListener('click', () => {
             sidebar.classList.toggle('active');
+            toggleBackdrop(sidebar.classList.contains('active'));
         });
+    }
+
+    // Backdrop overlay for mobile sidebar
+    function toggleBackdrop(show) {
+        let backdrop = document.querySelector('.sidebar-backdrop');
+        if (show) {
+            if (!backdrop) {
+                backdrop = document.createElement('div');
+                backdrop.className = 'sidebar-backdrop';
+                document.body.appendChild(backdrop);
+                backdrop.addEventListener('click', () => {
+                    sidebar.classList.remove('active');
+                    toggleBackdrop(false);
+                });
+            }
+            backdrop.classList.add('active');
+        } else if (backdrop) {
+            backdrop.classList.remove('active');
+        }
     }
 
     // Close sidebar when clicking outside on mobile
@@ -23,138 +43,148 @@ document.addEventListener('DOMContentLoaded', () => {
             !sidebar.contains(e.target) && 
             !sidebarToggle.contains(e.target)) {
             sidebar.classList.remove('active');
+            toggleBackdrop(false);
         }
     });
 
-    // Submenu toggle - click primary link to expand/collapse submenu
+    // Mobile nav toggle (top-right hamburger → right drawer)
+    const menuToggle = document.getElementById('menuToggle');
+    const navMobile = document.getElementById('navMobile');
+    const navClose = document.getElementById('navClose');
+
+    function toggleNavBackdrop(show) {
+        let bd = document.querySelector('.nav-backdrop');
+        if (show) {
+            if (!bd) {
+                bd = document.createElement('div');
+                bd.className = 'nav-backdrop';
+                document.body.appendChild(bd);
+                bd.addEventListener('click', closeNav);
+            }
+            bd.classList.add('active');
+        } else if (bd) {
+            bd.classList.remove('active');
+        }
+    }
+
+    function closeNav() {
+        if (navMobile) navMobile.classList.remove('active');
+        if (menuToggle) menuToggle.classList.remove('active');
+        toggleNavBackdrop(false);
+    }
+
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            const isOpen = navMobile.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+            toggleNavBackdrop(isOpen);
+        });
+    }
+
+    if (navClose) {
+        navClose.addEventListener('click', closeNav);
+    }
+
+    // Click anywhere on header bar to close
+    const navHeader = document.querySelector('.nav-mobile-header');
+    if (navHeader) {
+        navHeader.addEventListener('click', closeNav);
+    }
+
+    // Close nav drawer when clicking nav links
+    if (navMobile) {
+        navMobile.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', closeNav);
+        });
+    }
+
+    // Helper: collapse all submenus
+    function collapseAllSubmenus() {
+        sidebarItems.forEach(item => {
+            item._userExpanded = false;
+            item.classList.remove('expanded');
+            const link = item.querySelector('.sidebar-link');
+            if (link) link.classList.remove('expanded');
+            const sub = item.querySelector('.sidebar-submenu');
+            if (sub) sub.classList.remove('active');
+        });
+    }
+
+    // Helper: expand a specific submenu
+    function expandSubmenu(item) {
+        const submenu = item.querySelector('.sidebar-submenu');
+        if (!submenu) return;
+        item._userExpanded = true;
+        item.classList.add('expanded');
+        const link = item.querySelector('.sidebar-link');
+        if (link) link.classList.add('expanded');
+        submenu.classList.add('active');
+    }
+
+    // Primary link click: expand own submenu (if any), collapse others, scroll
     sidebarItems.forEach(item => {
         const primaryLink = item.querySelector('.sidebar-link');
-        const submenu = item.querySelector('.sidebar-submenu');
-        
-        if (submenu) {
-            // Track expanded state per item to avoid observer re-expansion
-            item._userExpanded = false;
-            
-            primaryLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                const wasExpanded = item._userExpanded;
-                
-                // Collapse all other submenus
-                sidebarItems.forEach(otherItem => {
-                    if (otherItem !== item && otherItem._userExpanded) {
-                        otherItem._userExpanded = false;
-                        otherItem.classList.remove('expanded');
-                        const otherLink = otherItem.querySelector('.sidebar-link');
-                        if (otherLink) otherLink.classList.remove('expanded');
-                        const otherSubmenu = otherItem.querySelector('.sidebar-submenu');
-                        if (otherSubmenu) otherSubmenu.classList.remove('active');
-                    }
-                });
-                
-                // Toggle current submenu
-                if (wasExpanded) {
-                    item._userExpanded = false;
-                    item.classList.remove('expanded');
-                    primaryLink.classList.remove('expanded');
-                    submenu.classList.remove('active');
-                } else {
-                    item._userExpanded = true;
-                    item.classList.add('expanded');
-                    primaryLink.classList.add('expanded');
-                    submenu.classList.add('active');
-                    // Activate the primary link
-                    sidebarLinks.forEach(l => l.classList.remove('active'));
-                    primaryLink.classList.add('active');
-                }
-            });
-        }
+
+        primaryLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            collapseAllSubmenus();
+            expandSubmenu(item);
+
+            // Update active state
+            sidebarLinks.forEach(l => l.classList.remove('active'));
+            primaryLink.classList.add('active');
+
+            // Scroll to section
+            const sectionId = primaryLink.getAttribute('data-section');
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                const headerOffset = 80;
+                const offset = targetSection.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+                window.scrollTo({ top: offset, behavior: 'instant' });
+            }
+
+            if (window.innerWidth <= 768) {
+                sidebar.classList.remove('active');
+                toggleBackdrop(false);
+            }
+        });
     });
 
-    // Sidebar link click
+    // Sidebar link click — submenu links only
     sidebarLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-            // For submenu links: expand parent and scroll (stopPropagation prevents this handler from running via bubbling)
             if (link.classList.contains('sidebar-link--sub')) {
                 e.preventDefault();
-                
-                // Expand parent submenu
+
                 const parentItem = link.closest('.sidebar-item');
-                if (parentItem && !parentItem._userExpanded) {
-                    // Collapse all others first
-                    sidebarItems.forEach(otherItem => {
-                        if (otherItem !== parentItem && otherItem._userExpanded) {
-                            otherItem._userExpanded = false;
-                            otherItem.classList.remove('expanded');
-                            const otherLink = otherItem.querySelector('.sidebar-link');
-                            if (otherLink) otherLink.classList.remove('expanded');
-                            const otherSubmenu = otherItem.querySelector('.sidebar-submenu');
-                            if (otherSubmenu) otherSubmenu.classList.remove('active');
-                        }
-                    });
-                    parentItem._userExpanded = true;
-                    parentItem.classList.add('expanded');
-                    const parentLink = parentItem.querySelector('.sidebar-link');
-                    if (parentLink) parentLink.classList.add('expanded');
-                    const submenu = parentItem.querySelector('.sidebar-submenu');
-                    if (submenu) submenu.classList.add('active');
-                }
-                
-                // Update active state
+                collapseAllSubmenus();
+                expandSubmenu(parentItem);
+
                 sidebarLinks.forEach(l => l.classList.remove('active'));
                 link.classList.add('active');
-                if (parentItem) {
-                    const parentLink = parentItem.querySelector('.sidebar-link');
-                    if (parentLink) parentLink.classList.add('active');
-                }
-                
-                // Scroll to section using href hash
+                const parentLink = parentItem.querySelector('.sidebar-link');
+                if (parentLink) parentLink.classList.add('active');
+
                 const href = link.getAttribute('href');
                 const targetSection = href ? document.querySelector(href) : null;
                 if (targetSection) {
                     const headerOffset = 80;
-                    const elementPosition = targetSection.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                    const offset = targetSection.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+                    window.scrollTo({ top: offset, behavior: 'instant' });
                 }
-                
+
                 if (window.innerWidth <= 768) {
                     sidebar.classList.remove('active');
-                }
-                return;
-            }
-            
-            // Primary link: prevent hash navigation (scroll handled manually)
-            e.preventDefault();
-            
-            const sectionId = link.getAttribute('data-section');
-            const targetSection = document.getElementById(sectionId);
-            
-            if (targetSection) {
-                // Update active state
-                sidebarLinks.forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
-                
-                // Scroll to section
-                const headerOffset = 80;
-                const elementPosition = targetSection.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-                
-                // Close mobile sidebar
-                if (window.innerWidth <= 768) {
-                    sidebar.classList.remove('active');
+                    toggleBackdrop(false);
                 }
             }
         });
     });
 
-    // Scroll spy - highlight current section
+    // Scroll spy - highlight current section and expand its submenu
+    let lastSectionId = '';
     const observerOptions = {
         root: null,
         rootMargin: '-80px 0px -70% 0px',
@@ -165,27 +195,46 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const sectionId = entry.target.id;
-                
-                // Update sidebar active state
+                if (sectionId === lastSectionId) return;
+                lastSectionId = sectionId;
+
+                // Find the primary link for this section
+                let matchedPrimaryItem = null;
+                sidebarItems.forEach(item => {
+                    const link = item.querySelector('.sidebar-link');
+                    if (link && link.getAttribute('data-section') === sectionId) {
+                        matchedPrimaryItem = item;
+                    }
+                });
+
+                // Also check sub-links
+                if (!matchedPrimaryItem) {
+                    sidebarLinks.forEach(link => {
+                        const href = link.getAttribute('href');
+                        if (href && href.substring(1) === sectionId && link.classList.contains('sidebar-link--sub')) {
+                            matchedPrimaryItem = link.closest('.sidebar-item');
+                        }
+                    });
+                }
+
+                if (matchedPrimaryItem) {
+                    collapseAllSubmenus();
+                    expandSubmenu(matchedPrimaryItem);
+                }
+
+                // Update active state
                 sidebarLinks.forEach(link => {
                     link.classList.remove('active');
-                    
-                    // Match by data-section (primary links) or href hash (sub-links)
                     const linkHref = link.getAttribute('href');
                     const matchSection = link.getAttribute('data-section') === sectionId;
                     const matchSub = linkHref && linkHref.substring(1) === sectionId;
-                    
                     if (matchSection || matchSub) {
                         link.classList.add('active');
-                        
-                        // If it's a sub-link, also activate parent (but do NOT expand submenu)
                         if (link.classList.contains('sidebar-link--sub')) {
                             const parentItem = link.closest('.sidebar-item');
                             if (parentItem) {
                                 const parentLink = parentItem.querySelector('.sidebar-link');
-                                if (parentLink) {
-                                    parentLink.classList.add('active');
-                                }
+                                if (parentLink) parentLink.classList.add('active');
                             }
                         }
                     }

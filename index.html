@@ -8,10 +8,7 @@
           content="有风无界 - 专属私藏！宝藏浏览器~ 追美剧，追韩剧，追泰剧，追日剧，样样都行。Android全栈视频浏览器，支持视频嗅探、边下边播、悬浮播放、广告过滤、投屏等功能">
     <meta name="keywords"
           content="有风无界, 追剧神器, 视频浏览器, 在线播放器, 视频嗅探, 下载不限速">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap"
-          rel="stylesheet">
+    <link rel="stylesheet" href="fonts/notosanssc.css">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="favicon.png">
 </head>
@@ -38,6 +35,22 @@
         </button>
     </div>
 </header>
+
+<!-- Mobile Nav Drawer (outside header to avoid stacking context) -->
+<nav class="nav-mobile" id="navMobile">
+    <div class="nav-mobile-header">
+        <span class="nav-mobile-title">有风无界</span>
+        <button class="nav-close" id="navClose" aria-label="关闭菜单">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+    </div>
+    <a href="#features" class="nav-link">核心功能</a>
+    <a href="#guide" class="nav-link">常见问题</a>
+    <a href="#changelog" class="nav-link">更新日志</a>
+    <a href="#download" class="nav-link nav-link--cta">下载</a>
+    <a href="#contact" class="nav-link">联系我们</a>
+    <a href="guide.html" class="nav-link nav-link--guide">使用说明书</a>
+</nav>
 
 <!-- Hero Section -->
 <section class="hero">

@@ -272,6 +272,22 @@ button {
     height: 24px;
 }
 
+/* Sidebar Backdrop (Mobile) */
+.sidebar-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1100;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar-backdrop.active {
+    display: block;
+    opacity: 1;
+}
+
 /* ========================================
    Content
    ======================================== */
@@ -1026,6 +1042,35 @@ button {
 }
 
 /* ========================================
+   Table Scroll Wrapper (Mobile)
+   ======================================== */
+.table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 16px 0 24px;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+}
+
+.table-wrap .doc-table {
+    margin: 0;
+    min-width: 480px;
+}
+
+.table-wrap::-webkit-scrollbar {
+    height: 4px;
+}
+
+.table-wrap::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.table-wrap::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 2px;
+}
+
+/* ========================================
    Animations
    ======================================== */
 @keyframes fadeInUp {
@@ -1060,80 +1105,506 @@ button {
 }
 
 /* ========================================
-   Responsive
+   Responsive — Tablet (≤1024px)
    ======================================== */
 @media (max-width: 1024px) {
     .content {
         padding: 32px 40px 80px;
     }
-    
+
     .footer {
         padding: 32px 40px;
     }
+
+    .sidebar {
+        width: 240px;
+    }
+
+    :root {
+        --sidebar-width: 240px;
+    }
 }
 
+/* ========================================
+   Responsive — Phone (≤768px)
+   ======================================== */
 @media (max-width: 768px) {
+    :root {
+        --header-height: 52px;
+    }
+
+    /* Prevent horizontal overflow */
+    html, body {
+        overflow-x: hidden;
+    }
+
+    /* --- Header --- */
     .nav {
         display: none;
     }
-    
+
     .menu-toggle {
         display: flex;
     }
-    
+
+    .logo-text {
+        font-size: 16px;
+    }
+
+    .logo-img {
+        height: 28px;
+    }
+
+    /* --- Mobile Nav Drawer (right side, full height) --- */
+    .nav-mobile {
+        display: none;
+    }
+
+    .nav-mobile.active {
+        display: flex;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 200px;
+        background: var(--color-bg);
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        gap: 0;
+        padding: 16px 0;
+        z-index: 1300;
+        box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
+        overflow-y: auto;
+    }
+
+    /* Panel header: title + close button */
+    .nav-mobile-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 16px 14px;
+        border-bottom: 1px solid var(--color-border);
+        margin-bottom: 4px;
+        animation: titleBounce 0.4s ease 0.15s both;
+        cursor: pointer;
+    }
+
+    .nav-mobile-title {
+        font-size: 15px;
+        font-weight: 400;
+        color: var(--color-accent);
+    }
+
+    .nav-close {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        border: none;
+        background: rgba(0, 0, 0, 0.05);
+        border-radius: 50%;
+        cursor: pointer;
+        color: var(--color-text-secondary);
+        transition: background 0.2s, color 0.2s;
+        flex-shrink: 0;
+    }
+
+    .nav-close:hover {
+        background: rgba(0, 0, 0, 0.1);
+        color: var(--color-text);
+    }
+
+    @keyframes titleBounce {
+        0% { opacity: 0; transform: translateY(-8px); }
+        60% { transform: translateY(2px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .nav-mobile.active .nav-link {
+        font-size: 15px;
+        padding: 13px 20px;
+        border-bottom: 1px solid var(--color-border);
+        color: var(--color-text-secondary);
+    }
+
+    .nav-mobile.active .nav-link:hover,
+    .nav-mobile.active .nav-link:active {
+        color: var(--color-text);
+        background: rgba(0, 0, 0, 0.03);
+    }
+
+    .nav-mobile.active .nav-link--cta {
+        background: var(--color-accent);
+        color: #fff;
+        border-radius: 0;
+        margin: 0;
+        padding: 14px 20px;
+        font-weight: 500;
+    }
+
+    .nav-mobile.active .nav-link--cta:hover {
+        background: var(--color-accent-hover);
+        color: #fff;
+    }
+
+    /* Hamburger hides when menu is open */
+    .menu-toggle.active {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    /* Nav Backdrop */
+    .nav-backdrop {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 1200;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .nav-backdrop.active {
+        display: block;
+        opacity: 1;
+    }
+
+    /* --- Sidebar Drawer --- */
     .sidebar {
         transform: translateX(-100%);
-        transition: transform var(--transition-normal);
+        transition: transform 0.3s ease;
+        width: 280px;
+        top: 0;
+        z-index: 1200;
+        box-shadow: none;
     }
-    
+
     .sidebar.active {
         transform: translateX(0);
-        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
+        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
     }
-    
+
     .sidebar-toggle {
         display: flex;
     }
-    
+
+    /* --- Content --- */
     .content {
         margin-left: 0;
-        padding: 24px 20px 100px;
+        padding: 24px 16px 100px;
+        overflow-x: hidden;
     }
-    
-    .footer {
-        margin-left: 0;
-        padding: 24px 20px;
+
+    .content-section {
+        margin-bottom: 40px;
+        padding-bottom: 40px;
+        overflow-x: hidden;
     }
-    
+
+    .section-badge {
+        font-size: 11px;
+        padding: 3px 10px;
+    }
+
+    .content-title {
+        font-size: 24px;
+    }
+
+    /* --- Tables (horizontal scroll) --- */
+    .table-wrap {
+        margin: 12px 0 20px;
+        border-radius: 6px;
+    }
+
+    .table-wrap .doc-table {
+        min-width: 420px;
+        font-size: 13px;
+    }
+
+    .table-wrap .doc-table th,
+    .table-wrap .doc-table td {
+        padding: 8px 10px;
+    }
+
+    /* --- Images --- */
+    .doc-img {
+        max-height: 400px;
+        border-radius: 8px;
+        margin: 14px auto;
+    }
+
+    .doc-img-group {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .doc-img-group .doc-img {
+        max-width: 100%;
+        max-height: 360px;
+    }
+
+    .doc-img-caption {
+        font-size: 12px;
+    }
+
+    /* --- Lists --- */
+    .doc-list li {
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    /* --- FAQ --- */
+    .faq-trigger {
+        padding: 14px 16px;
+        min-height: 48px;
+    }
+
+    .faq-question {
+        font-size: 13px;
+    }
+
+    .faq-answer p {
+        font-size: 12px;
+        padding: 0 16px;
+    }
+
+    .faq-answer ul {
+        padding: 0 16px 12px 32px;
+    }
+
+    /* --- Feature Grid --- */
     .feature-grid {
         grid-template-columns: 1fr;
+        gap: 12px;
     }
-    
+
+    .feature-item {
+        padding: 14px;
+    }
+
+    /* --- Feature Content --- */
     .feature-content {
         grid-template-columns: 1fr;
     }
-    
+
     .feature-content--split {
         grid-template-columns: 1fr;
     }
-    
+
+    /* --- Settings Grid --- */
     .settings-grid {
         grid-template-columns: 1fr;
     }
-    
+
+    .setting-card {
+        padding: 16px;
+    }
+
+    /* --- Steps --- */
+    .step {
+        padding: 16px;
+        gap: 14px;
+    }
+
+    .step-number {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+    }
+
+    .step-title {
+        font-size: 15px;
+    }
+
+    .step-desc {
+        font-size: 13px;
+    }
+
+    /* --- Content Footer --- */
+    .content-footer {
+        padding-top: 28px;
+    }
+
+    .content-footer .btn {
+        padding: 10px 18px;
+        font-size: 13px;
+    }
+
+    /* --- Footer --- */
+    .footer {
+        margin-left: 0;
+        padding: 24px 16px;
+    }
+
     .footer-content {
         flex-direction: column;
         gap: 16px;
         text-align: center;
     }
-    
+
     .footer-links {
         flex-wrap: wrap;
         justify-content: center;
+        gap: 14px;
+    }
+
+    .footer-links a {
+        font-size: 12px;
+    }
+
+    /* --- Lightbox --- */
+    .lightbox-close {
+        top: 12px;
+        right: 12px;
+        width: 36px;
+        height: 36px;
+    }
+
+    .lightbox-close svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .lightbox-nav {
+        width: 36px;
+        height: 36px;
+    }
+
+    .lightbox-nav svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .lightbox-prev {
+        left: 8px;
+    }
+
+    .lightbox-next {
+        right: 8px;
+    }
+
+    .lightbox-toolbar {
+        bottom: 12px;
+        padding: 6px 10px;
+        gap: 6px;
+    }
+
+    .lightbox-toolbar button {
+        width: 32px;
+        height: 32px;
+    }
+
+    .lightbox-toolbar button svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .lightbox-counter {
+        font-size: 12px;
+        padding: 0 6px;
     }
 }
 
-/* Back to Top Button */
+/* ========================================
+   Responsive — Small Phone (≤480px)
+   ======================================== */
+@media (max-width: 480px) {
+    .content {
+        padding: 20px 14px 80px;
+    }
+
+    .content-title {
+        font-size: 22px;
+    }
+
+    .section-badge {
+        font-size: 10px;
+    }
+
+    .doc-img {
+        max-height: 320px;
+    }
+
+    .doc-img-group .doc-img {
+        max-height: 280px;
+    }
+
+    .sidebar {
+        width: 260px;
+    }
+
+    .sidebar-link {
+        padding: 9px 16px;
+        font-size: 13px;
+    }
+
+    .sidebar-link--sub {
+        padding: 7px 16px 7px 44px;
+        font-size: 12px;
+    }
+
+    .sidebar-toggle {
+        width: 44px;
+        height: 44px;
+        bottom: 20px;
+        left: 20px;
+    }
+}
+
+/* ========================================
+   Responsive — Tiny Phone (≤360px)
+   ======================================== */
+@media (max-width: 360px) {
+    .content {
+        padding: 16px 12px 80px;
+    }
+
+    .content-title {
+        font-size: 20px;
+    }
+
+    .content-section h2 {
+        font-size: 16px !important;
+    }
+
+    .doc-img {
+        max-height: 260px;
+    }
+
+    .doc-img-group .doc-img {
+        max-height: 240px;
+    }
+
+    .sidebar {
+        width: 240px;
+    }
+
+    .sidebar-header {
+        padding: 18px 16px 12px;
+    }
+
+    .sidebar-title {
+        font-size: 15px;
+    }
+
+    .faq-trigger {
+        padding: 12px 14px;
+    }
+
+    .faq-question {
+        font-size: 12px;
+    }
+
+    .faq-answer p {
+        font-size: 11px;
+    }
+}
+
+/* ========================================
+   Back to Top Button
+   ======================================== */
 .back-to-top {
     position: fixed;
     bottom: 32px;

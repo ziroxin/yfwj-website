@@ -19,24 +19,54 @@ document.addEventListener('DOMContentLoaded', () => {
         lastScroll = currentScroll;
     });
 
-    // Mobile menu toggle
+    // Mobile menu toggle — right-side drawer
     const menuToggle = document.getElementById('menuToggle');
-    const nav = document.querySelector('.nav');
+    const navMobile = document.getElementById('navMobile');
+    const navClose = document.getElementById('navClose');
+
+    function toggleNavBackdrop(show) {
+        let backdrop = document.querySelector('.nav-backdrop');
+        if (show) {
+            if (!backdrop) {
+                backdrop = document.createElement('div');
+                backdrop.className = 'nav-backdrop';
+                document.body.appendChild(backdrop);
+                backdrop.addEventListener('click', closeNav);
+            }
+            backdrop.classList.add('active');
+        } else if (backdrop) {
+            backdrop.classList.remove('active');
+        }
+    }
+
+    function closeNav() {
+        if (navMobile) navMobile.classList.remove('active');
+        if (menuToggle) menuToggle.classList.remove('active');
+        toggleNavBackdrop(false);
+    }
 
     if (menuToggle) {
         menuToggle.addEventListener('click', () => {
-            nav.classList.toggle('active');
+            const isOpen = navMobile.classList.toggle('active');
             menuToggle.classList.toggle('active');
+            toggleNavBackdrop(isOpen);
         });
+    }
+
+    if (navClose) {
+        navClose.addEventListener('click', closeNav);
+    }
+
+    // Click anywhere on header bar to close
+    const navHeader = document.querySelector('.nav-mobile-header');
+    if (navHeader) {
+        navHeader.addEventListener('click', closeNav);
     }
 
     // Close mobile menu when clicking nav links
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            nav.classList.remove('active');
-            menuToggle.classList.remove('active');
-        });
+        link.addEventListener('click', closeNav);
     });
 
     // Guide accordion
